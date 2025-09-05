@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq6uqbalcvwc5"]
+
+[ext_resource type="Texture2D" uid="uid://bxtf1vlpbd3j1" path="res://Assets/ship.png" id="1_4flbx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4flbx"]
+friction = 0.0
+bounce = 0.5
+
+[sub_resource type="GDScript" id="GDScript_4flbx"]
+script/source = "extends RigidBody2D
+
+@onready var camera = $Camera2D
+
+# Movement
+func _physics_process(_delta: float) -> void:
+	if not (Input.is_action_pressed(\"Left\") and Input.is_action_pressed(\"Right\")):
+		apply_central_force(Vector2(500,0).rotated(rotation))
+		if Input.is_action_pressed(\"Left\"):
+			apply_torque(-1500)
+		elif Input.is_action_pressed(\"Right\"):
+			apply_torque(1500)
+			
+
+#Tile interactions
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	state.angular_velocity = clamp(state.angular_velocity, -2 * PI, 2 * PI)
+	
+	var tiledata
+	var tilemap = get_tree().get_first_node_in_group(\"Tilemap\")
+	if state.get_contact_count() > 0:
+		var directional_bias = state.get_contact_local_normal(0) * -2.0
+		var collide_tile_pos = tilemap.local_to_map(tilemap.to_local(state.get_contact_collider_position(0) + directional_bias))
+		tiledata = tilemap.get_cell_tile_data(collide_tile_pos)
+		if tiledata: 
+			tile_interactions(tiledata, state)
+	
+	var player_tile_pos = tilemap.local_to_map(tilemap.to_local(global_position))
+	tiledata = tilemap.get_cell_tile_data(player_tile_pos)
+	if tiledata:
+		background_interactions(tiledata, state)
+
+
+func tile_interactions(tiledata: TileData, state: PhysicsDirectBodyState2D):
+	var tiletype = tiledata.get_custom_data(\"type\")
+	if tiletype:
+		if tiletype == \"bouncer\":
+			state.linear_velocity = state.linear_velocity.normalized() * 300
+			rotation = state.linear_velocity.angle()
+
+func background_interactions(tileData: TileData, state: PhysicsDirectBodyState2D):
+	var tileType = tileData.get_custom_data(\"type\")
+	if tileType:
+		if tileType == \"booster\":
+			var boost_dir = tileData.get_custom_data(\"dir_norm\")
+			state.apply_central_force(boost_dir * 500)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_4flbx"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_onrkg"]
+gradient = SubResource("Gradient_4flbx")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Player" type="RigidBody2D" groups=["Player"]]
+physics_material_override = SubResource("PhysicsMaterial_4flbx")
+gravity_scale = 0.0
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 2
+linear_damp = 1.5
+angular_damp = 5.0
+script = SubResource("GDScript_4flbx")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(340.22443, 340.22443, 340.22443, 1)
+position = Vector2(2, 0)
+rotation = 1.5708
+texture = ExtResource("1_4flbx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-3, 0)
+amount = 50
+lifetime = 3.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(3, 3)
+direction = Vector2(0, 1)
+spread = 10.0
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0.47788, 0.47788, 0.47788, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4flbx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(1.4375, 1.4375)
+energy = 2.0
+texture = SubResource("GradientTexture2D_onrkg")
