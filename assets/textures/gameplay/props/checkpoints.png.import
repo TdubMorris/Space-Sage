@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxtf1vlpbd3j1"
-path="res://.godot/imported/ship.png-925640061b5e3260a2dfe6b5d95f2dc9.ctex"
+uid="uid://b756wox5cgbwa"
+path="res://.godot/imported/checkpoints.png-c1581261bd2dea954a1a7d4c13589561.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ship.png"
-dest_files=["res://.godot/imported/ship.png-925640061b5e3260a2dfe6b5d95f2dc9.ctex"]
+source_file="res://assets/textures/gameplay/props/checkpoints.png"
+dest_files=["res://.godot/imported/checkpoints.png-c1581261bd2dea954a1a7d4c13589561.ctex"]
 
 [params]
 

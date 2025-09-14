@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vrejw0yr7xes"
-path="res://.godot/imported/walls.png-9963ed9cfb8a4002ffe9f6039f4f5e24.ctex"
+uid="uid://ccnh7oqb5guwp"
+path="res://.godot/imported/bg.png-5f994056768215c85f6c5ab0bf1371c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tiles/walls.png"
-dest_files=["res://.godot/imported/walls.png-9963ed9cfb8a4002ffe9f6039f4f5e24.ctex"]
+source_file="res://assets/textures/gameplay/backgrounds/bg.png"
+dest_files=["res://.godot/imported/bg.png-5f994056768215c85f6c5ab0bf1371c6.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jn4sawfpht4r"
-path="res://.godot/imported/bouncers.png-4c05f795a8c3bb4a8b3e81a76849f8ff.ctex"
+path="res://.godot/imported/bouncers.png-15c8d6dd5480612ad2c67fe9080a12ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tiles/bouncers.png"
-dest_files=["res://.godot/imported/bouncers.png-4c05f795a8c3bb4a8b3e81a76849f8ff.ctex"]
+source_file="res://assets/textures/gameplay/tiles/bouncers.png"
+dest_files=["res://.godot/imported/bouncers.png-15c8d6dd5480612ad2c67fe9080a12ed.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0x3kg1fvgs5p"
-path="res://.godot/imported/boosters.png-3c3fbccf4ead1d1ed146b40d2d3ab9ea.ctex"
+uid="uid://bxtf1vlpbd3j1"
+path="res://.godot/imported/ship.png-38b481ad36642eb0a0fa7cbc246c4796.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tiles/boosters.png"
-dest_files=["res://.godot/imported/boosters.png-3c3fbccf4ead1d1ed146b40d2d3ab9ea.ctex"]
+source_file="res://assets/textures/gameplay/ship.png"
+dest_files=["res://.godot/imported/ship.png-38b481ad36642eb0a0fa7cbc246c4796.ctex"]
 
 [params]
 

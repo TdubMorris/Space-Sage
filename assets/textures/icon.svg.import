@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b756wox5cgbwa"
-path="res://.godot/imported/checkpoints.png-350bef87a26f233de74f9510f331ae26.ctex"
+uid="uid://b6bhtsw8tx0y2"
+path="res://.godot/imported/icon.svg-958a189a5c2fe57391e3d9b3ea181aa4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/checkpoints.png"
-dest_files=["res://.godot/imported/checkpoints.png-350bef87a26f233de74f9510f331ae26.ctex"]
+source_file="res://assets/textures/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-958a189a5c2fe57391e3d9b3ea181aa4.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

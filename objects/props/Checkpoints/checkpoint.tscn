@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dr3ay7figsdg2"]
 
-[ext_resource type="Script" uid="uid://c7lvyyojmeb1a" path="res://Gameplay/Props/checkpoint.gd" id="1_8703h"]
-[ext_resource type="Texture2D" uid="uid://b756wox5cgbwa" path="res://Assets/checkpoints.png" id="2_vfuc3"]
+[ext_resource type="Script" uid="uid://c7lvyyojmeb1a" path="res://objects/props/Checkpoints/checkpoint.gd" id="1_8703h"]
+[ext_resource type="Texture2D" uid="uid://b756wox5cgbwa" path="res://assets/textures/gameplay/props/checkpoints.png" id="2_vfuc3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r6hke"]
 blend_mode = 1
