@@ -70,6 +70,7 @@ Brake={
 
 [input_devices]
 
+pointing/emulate_touch_from_mouse=true
 pointing/canvas_textures/default_texture_filter=0
 pointing/quality/use_debanding=true
 
@@ -77,6 +78,7 @@ pointing/quality/use_debanding=true
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true
 anti_aliasing/quality/use_debanding=true
 2d/snap/snap_2d_vertices_to_pixel=true

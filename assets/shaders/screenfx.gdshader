@@ -23,13 +23,15 @@ void fragment() {
 		texture(screen_texture, sample_pos + ABamount * vec2(0.01, 0), 0.0).b
 	);
 
+
+
 	if(invert) {
 		col = 1.0 - col;
 	}
 
 	//crt lines
-	if(mod(FRAGCOORD.y, 8.0) < 2.0 && scanlines) {
-		col *= 0.9;
+	if(mod(FRAGCOORD.y, 8.0) < 4.0 && scanlines) {
+		col *= 0.8;
 	}
 
 	//vignette
