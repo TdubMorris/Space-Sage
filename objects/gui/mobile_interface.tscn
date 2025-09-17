@@ -39,6 +39,10 @@ metadata/_custom_type_script = "uid://celvyp2f2cx6s"
 layout_mode = 1
 offset_right = 74.0
 offset_bottom = 45.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2

@@ -15,7 +15,6 @@ blend_mode = 1
 
 [node name="Checkpoint" type="Node2D"]
 script = ExtResource("1_8703h")
-order = null
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -27,7 +26,7 @@ shape = SubResource("SegmentShape2D_tnhlw")
 material = SubResource("CanvasItemMaterial_s20m7")
 points = PackedVector2Array(0, 0, 0, 0)
 width = 4.0
-default_color = Color(0.17254902, 1, 0, 0.5058824)
+default_color = Color(0.17184411, 1, 0, 0.8)
 texture_mode = 1
 
 [node name="PointA" type="Sprite2D" parent="."]

@@ -1,23 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5g7l468oxqdp"]
+[gd_scene load_steps=4 format=3 uid="uid://c5g7l468oxqdp"]
 
 [ext_resource type="PackedScene" uid="uid://bq6uqbalcvwc5" path="res://objects/entities/player.tscn" id="1_5u5nm"]
 [ext_resource type="PackedScene" uid="uid://brew3f7lkksel" path="res://debug_level.tscn" id="2_qs0mg"]
 [ext_resource type="Texture2D" uid="uid://ccnh7oqb5guwp" path="res://assets/textures/gameplay/backgrounds/bg.png" id="3_qurgp"]
-[ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="4_7vqlg"]
-[ext_resource type="PackedScene" uid="uid://dvtamvwejubpg" path="res://objects/gui/mobile_interface.tscn" id="5_qs0mg"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7g2b"]
-shader = ExtResource("4_7vqlg")
-shader_parameter/invert = false
-shader_parameter/chrome_ab = 1.0
-shader_parameter/vignette = true
-shader_parameter/scanlines = true
-shader_parameter/bulge = true
 
 [node name="GameScene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5u5nm")]
-modulate = Color(18.892157, 18.203688, 0, 1)
+modulate = Color(1, 1, 0, 1)
+position = Vector2(294, 66)
 
 [node name="BasicLevel" parent="." instance=ExtResource("2_qs0mg")]
 
@@ -30,21 +21,3 @@ repeat_size = Vector2(320, 180)
 [node name="Bg" type="Sprite2D" parent="Background"]
 position = Vector2(160, 90)
 texture = ExtResource("3_qurgp")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-
-[node name="ShaderOverlay" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="ShaderOverlay"]
-material = SubResource("ShaderMaterial_f7g2b")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Overlay" type="CanvasLayer" parent="."]
-
-[node name="Mobile Interface" parent="Overlay" instance=ExtResource("5_qs0mg")]
