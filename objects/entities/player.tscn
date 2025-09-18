@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq6uqbalcvwc5"]
+[gd_scene load_steps=6 format=3 uid="uid://bq6uqbalcvwc5"]
 
 [ext_resource type="Texture2D" uid="uid://bxtf1vlpbd3j1" path="res://assets/textures/gameplay/ship.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bsnpcgm0qicyo" path="res://objects/entities/player.gd" id="1_sm54d"]
@@ -6,6 +6,10 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4flbx"]
 friction = 0.0
 bounce = 0.5
+
+[sub_resource type="Gradient" id="Gradient_sm54d"]
+offsets = PackedFloat32Array(0.02238806, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 8.0
@@ -22,7 +26,6 @@ script = ExtResource("1_sm54d")
 metadata/_edit_vertical_guides_ = [-395.0]
 
 [node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(340.22443, 340.22443, 340.22443, 1)
 position = Vector2(2, 0)
 rotation = 1.5708
 texture = ExtResource("1_4flbx")
@@ -42,7 +45,7 @@ initial_velocity_min = 1.0
 initial_velocity_max = 10.0
 scale_amount_min = 2.0
 scale_amount_max = 2.0
-color = Color(0.47788, 0.47788, 0.47788, 1)
+color_ramp = SubResource("Gradient_sm54d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4flbx")
