@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5iktbsxvg4om"]
+
+[ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="1_7ijjg"]
+[ext_resource type="Texture2D" uid="uid://rk4t45yma43a" path="res://assets/textures/gui/spacesage.png" id="1_bac01"]
+[ext_resource type="Shader" uid="uid://bpdsgu1q7pp58" path="res://assets/shaders/contrast.gdshader" id="2_bac01"]
+[ext_resource type="PackedScene" uid="uid://5r0bef3luprn" path="res://objects/scenes/Menu/menu_level.tscn" id="3_htruo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bac01"]
+shader = ExtResource("1_7ijjg")
+shader_parameter/invert = false
+shader_parameter/chrome_ab = 0.0
+shader_parameter/vignette = true
+shader_parameter/scanline_height = 0.0
+shader_parameter/bulge = true
+shader_parameter/glow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htruo"]
+shader = ExtResource("1_7ijjg")
+shader_parameter/invert = false
+shader_parameter/chrome_ab = 1.0
+shader_parameter/vignette = false
+shader_parameter/scanline_height = 8.0
+shader_parameter/bulge = false
+shader_parameter/glow = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4llj"]
+shader = ExtResource("2_bac01")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bulge" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ScreenFXShader" type="ColorRect" parent="Bulge"]
+material = SubResource("ShaderMaterial_bac01")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuGUI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuGUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 72
+theme_override_constants/margin_top = 72
+theme_override_constants/margin_right = 72
+theme_override_constants/margin_bottom = 72
+
+[node name="Control" type="Control" parent="MenuGUI/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuGUI/MarginContainer/Control"]
+modulate = Color(0.75390625, 0.75390625, 0.75390625, 1)
+custom_minimum_size = Vector2(312, 128)
+layout_mode = 1
+offset_right = 312.0
+offset_bottom = 128.0
+texture = ExtResource("1_bac01")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuGUI/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -40.0
+offset_right = 160.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="Button" type="Button" parent="MenuGUI/MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "Play"
+flat = true
+
+[node name="Button2" type="Button" parent="MenuGUI/MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "Level Editor (Planned)"
+flat = true
+
+[node name="Button3" type="Button" parent="MenuGUI/MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "Settings
+"
+flat = true
+
+[node name="OtherFX" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ScreenFXShader" type="ColorRect" parent="OtherFX"]
+material = SubResource("ShaderMaterial_htruo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Contrast" type="CanvasLayer" parent="."]
+
+[node name="ContrastShader" type="ColorRect" parent="Contrast"]
+material = SubResource("ShaderMaterial_y4llj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuLevel" parent="." instance=ExtResource("3_htruo")]

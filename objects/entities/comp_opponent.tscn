@@ -13,7 +13,7 @@ _data = [Vector2(-3.14, -1), 0.0, 0.0, 0, 0, Vector2(-1.0013387, -1), 0.0, 0.0, 
 point_count = 5
 
 [sub_resource type="Gradient" id="Gradient_p26fh"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lm3qj"]
 radius = 8.0
@@ -59,9 +59,9 @@ shape = SubResource("CircleShape2D_lm3qj")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
-path_postprocessing = 1
-simplify_path = true
 simplify_epsilon = 3.0
+avoidance_enabled = true
+avoidance_layers = 0
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 1, 1, 0.2)

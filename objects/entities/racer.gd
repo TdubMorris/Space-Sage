@@ -22,8 +22,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if tiledata: 
 			tile_interactions(tiledata, state)
 	
-	var player_tile_pos = tilemap.local_to_map(tilemap.to_local(global_position))
-	tiledata = tilemap.get_cell_tile_data(player_tile_pos)
+	var tile_pos = tilemap.local_to_map(tilemap.to_local(global_position))
+	tiledata = tilemap.get_cell_tile_data(tile_pos)
 	if tiledata:
 		background_interactions(tiledata, state)
 	

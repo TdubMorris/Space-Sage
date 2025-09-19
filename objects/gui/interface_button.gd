@@ -26,7 +26,7 @@ func release():
 	released = true
 
 func is_in(pos : Vector2) -> bool:
-	return ((int(pos.x) in range(position.x, position.x + size.x)) and (int(pos.y) in range(position.y, position.y + size.y)))
+	return (global_position.x < pos.x and pos.x < global_position.x + size.x) and (global_position.y < pos.y and pos.y < global_position.y + size.y)
 
 func _input(event):
 	if event is InputEventScreenTouch:

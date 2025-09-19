@@ -1,9 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvtamvwejubpg"]
+[gd_scene load_steps=11 format=3 uid="uid://dvtamvwejubpg"]
 
 [ext_resource type="Script" uid="uid://celvyp2f2cx6s" path="res://objects/gui/interface_button.gd" id="1_22irl"]
+[ext_resource type="Script" uid="uid://bqxuw5r1ool1b" path="res://objects/gui/mobile_interface.gd" id="1_r1xlo"]
 [ext_resource type="Script" uid="uid://cchel0amafqfb" path="res://objects/gui/label.gd" id="2_8mk0i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1xlo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r1xlo"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_7mgyd"]
+colors = PackedColorArray(1, 1, 1, 0.5, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_attj1"]
+gradient = SubResource("Gradient_7mgyd")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_251em"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_elj2o"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.5)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a5v6i"]
+gradient = SubResource("Gradient_elj2o")
 
 [node name="Mobile Interface" type="Control"]
 layout_mode = 3
@@ -12,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r1xlo")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -46,10 +66,13 @@ script = ExtResource("1_22irl")
 input_action = &"Right"
 metadata/_custom_type_script = "uid://celvyp2f2cx6s"
 
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_right = 101.0
-offset_bottom = 87.0
+offset_right = 74.0
+offset_bottom = 45.0
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
@@ -61,3 +84,23 @@ size_flags_horizontal = 4
 text = "eeee"
 label_settings = SubResource("LabelSettings_r1xlo")
 script = ExtResource("2_8mk0i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftGlow" type="TextureRect" parent="HBoxContainer"]
+material = SubResource("CanvasItemMaterial_r1xlo")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture1D_attj1")
+
+[node name="RightGlow" type="TextureRect" parent="HBoxContainer"]
+material = SubResource("CanvasItemMaterial_251em")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture1D_a5v6i")

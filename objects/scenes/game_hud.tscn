@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://c6cwov5spe5uw"]
 
 [ext_resource type="PackedScene" uid="uid://dvtamvwejubpg" path="res://objects/gui/mobile_interface.tscn" id="1_01exk"]
-[ext_resource type="PackedScene" uid="uid://c5g7l468oxqdp" path="res://objects/scenes/game_scene.tscn" id="2_7k11s"]
 [ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="2_df840"]
 [ext_resource type="Shader" uid="uid://bpdsgu1q7pp58" path="res://assets/shaders/contrast.gdshader" id="3_b62bx"]
+[ext_resource type="PackedScene" uid="uid://brew3f7lkksel" path="res://objects/scenes/debug_level.tscn" id="4_df840"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_df840"]
 shader = ExtResource("2_df840")
@@ -48,4 +48,4 @@ grow_vertical = 2
 
 [node name="Mobile Interface" parent="Overlay" instance=ExtResource("1_01exk")]
 
-[node name="GameScene" parent="." instance=ExtResource("2_7k11s")]
+[node name="BasicLevel" parent="." instance=ExtResource("4_df840")]

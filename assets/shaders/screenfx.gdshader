@@ -7,6 +7,7 @@ uniform float chrome_ab;
 uniform bool vignette;
 uniform float scanline_height;
 uniform bool bulge;
+uniform bool glow;
 
 void fragment() {
 
@@ -22,11 +23,13 @@ void fragment() {
 		texture(screen_texture, sample_pos, 0.0).g,
 		texture(screen_texture, sample_pos + ABamount * vec2(0.01, 0), 0.0).b
 	);
-
-	col = (col - 0.5) * 1.1 + 0.5;
-	col += 
-	1.0 * textureLod(screen_texture, sample_pos, 3.0).rgb +
-	1.0 * textureLod(screen_texture, sample_pos, 5.0).rgb;
+	
+	if(glow) {
+		col = (col - 0.5) * 1.1 + 0.5;
+		col += 
+		1.0 * textureLod(screen_texture, sample_pos, 3.0).rgb +
+		1.0 * textureLod(screen_texture, sample_pos, 5.0).rgb;
+	}
 	
 	if(invert) {
 		col = 1.0 - col;
@@ -40,7 +43,7 @@ void fragment() {
 
 	//vignette
 	if(vignette) {
-		col *= 1.0 - 1.3 * distance(SCREEN_UV, vec2(0.5, 0.5));
+		col *= 1.0 - 0.7 * distance(SCREEN_UV, vec2(0.5, 0.5));
 	}
 
 	COLOR = vec4(col, 1.0);

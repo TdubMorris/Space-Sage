@@ -1,6 +1,7 @@
 class_name Player
 extends Racer
 
+
 func _physics_process(_delta):
 	if not (Input.is_action_pressed("Left") and Input.is_action_pressed("Right")):
 		thrust(500)
