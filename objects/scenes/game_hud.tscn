@@ -12,6 +12,7 @@ shader_parameter/chrome_ab = 1.0
 shader_parameter/vignette = true
 shader_parameter/scanline_height = 8.0
 shader_parameter/bulge = true
+shader_parameter/glow = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b62bx"]
 shader = ExtResource("3_b62bx")
