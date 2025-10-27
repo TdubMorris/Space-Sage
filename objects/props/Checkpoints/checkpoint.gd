@@ -1,12 +1,14 @@
 @tool
 extends Node2D
+class_name Checkpoint
 
 @onready var sprite_b : Sprite2D = $PointB
 @onready var segment = $Line2D
 @onready var collision = $Area2D/CollisionShape2D
 
 @export var point_b : Vector2 = Vector2(0, 0) : set = _set_point_b
-@export var order : int = 0
+
+var triggered : bool = false : set = _set_triggered
 
 func _set_point_b(new_value):
 	point_b = new_value
@@ -18,11 +20,17 @@ func _set_point_b(new_value):
 
 func _ready():
 	_set_point_b(point_b)
-
-
-
+	_set_triggered(triggered)
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
+		if TimeManager.currentLap == 0:
+			return
+		triggered = true
+
+func _set_triggered(newVal : bool): 
+	triggered = newVal
+	if newVal:
 		segment.hide()
-	pass # Replace with function body.
+	else:
+		segment.show()

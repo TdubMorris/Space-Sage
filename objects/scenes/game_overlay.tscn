@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6cwov5spe5uw"]
+
+[ext_resource type="Script" uid="uid://bwdp4ifgkq5" path="res://objects/scenes/game_overlay.gd" id="1_ec5mu"]
+[ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="2_xd00m"]
+[ext_resource type="Shader" uid="uid://bpdsgu1q7pp58" path="res://assets/shaders/contrast.gdshader" id="3_pcr6y"]
+[ext_resource type="PackedScene" uid="uid://dvtamvwejubpg" path="res://objects/gui/button_interface.tscn" id="4_rbc3i"]
+[ext_resource type="PackedScene" uid="uid://c0ntoyywjbh2w" path="res://objects/gui/game_hud.tscn" id="5_ppwt1"]
+[ext_resource type="PackedScene" uid="uid://b3ptx08mcaj2s" path="res://objects/gui/pause_menu.tscn" id="6_0d0nn"]
+[ext_resource type="PackedScene" uid="uid://brew3f7lkksel" path="res://objects/scenes/debug_level.tscn" id="7_2shis"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_df840"]
+shader = ExtResource("2_xd00m")
+shader_parameter/invert = false
+shader_parameter/chrome_ab = 1.0
+shader_parameter/vignette = true
+shader_parameter/scanline_height = 8.0
+shader_parameter/bulge = true
+shader_parameter/glow = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b62bx"]
+shader = ExtResource("3_pcr6y")
+
+[node name="GameOverlay" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ec5mu")
+
+[node name="ScreenFX" type="CanvasLayer" parent="."]
+
+[node name="ScreenFXShader" type="ColorRect" parent="ScreenFX"]
+material = SubResource("ShaderMaterial_df840")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contrast" type="CanvasLayer" parent="."]
+
+[node name="ContrastShader" type="ColorRect" parent="Contrast"]
+material = SubResource("ShaderMaterial_b62bx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="Mobile Interface" parent="Overlay" instance=ExtResource("4_rbc3i")]
+
+[node name="GameTimer" parent="Overlay" instance=ExtResource("5_ppwt1")]
+
+[node name="PauseMenu" parent="Overlay" instance=ExtResource("6_0d0nn")]
+unique_name_in_owner = true
+
+[node name="BasicLevel" parent="." instance=ExtResource("7_2shis")]

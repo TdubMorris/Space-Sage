@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3ptx08mcaj2s"]
+
+[ext_resource type="FontFile" uid="uid://dburxiwbvmo73" path="res://assets/themes/fonts/AnonymousPro-Regular.ttf" id="1_4eddb"]
+[ext_resource type="Script" uid="uid://b8gxghlehhd4r" path="res://objects/gui/pause_menu.gd" id="1_7ei8y"]
+[ext_resource type="Shader" uid="uid://rgj3icvt676e" path="res://assets/shaders/blur.gdshader" id="1_kmrqu"]
+[ext_resource type="Theme" uid="uid://dxn6osqn7hlvi" path="res://assets/themes/hologram_button.tres" id="3_sblau"]
+
+[sub_resource type="Theme" id="Theme_kmrqu"]
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_4eddb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmppc"]
+shader = ExtResource("1_kmrqu")
+shader_parameter/lod = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyp4r"]
+shader = ExtResource("1_kmrqu")
+shader_parameter/lod = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ckr"]
+shader = ExtResource("1_kmrqu")
+shader_parameter/lod = 4.0
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ei8y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -142.5
+offset_right = 256.0
+offset_bottom = 142.5
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kmrqu")
+text = "Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_vmppc")
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme = ExtResource("3_sblau")
+text = "Resume
+"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_cyp4r")
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme = ExtResource("3_sblau")
+text = "Settings
+"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_d1ckr")
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme = ExtResource("3_sblau")
+text = "Quit
+"
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_up"]

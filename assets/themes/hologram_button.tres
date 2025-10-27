@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dxn6osqn7hlvi"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dxn6osqn7hlvi"]
+
+[ext_resource type="FontFile" uid="uid://jq77kikssgyr" path="res://assets/themes/fonts/AnonymousPro-Bold.ttf" id="1_emnqn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_477k8"]
 bg_color = Color(1, 1, 1, 0.16000001)
@@ -26,6 +28,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
+Button/fonts/font = ExtResource("1_emnqn")
 Button/styles/focus = SubResource("StyleBoxFlat_477k8")
 Button/styles/hover = SubResource("StyleBoxFlat_emnqn")
 Button/styles/normal = SubResource("StyleBoxFlat_3ip5n")

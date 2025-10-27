@@ -1,20 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://dr3ay7figsdg2"]
 
 [ext_resource type="Script" uid="uid://c7lvyyojmeb1a" path="res://objects/props/Checkpoints/checkpoint.gd" id="1_8703h"]
-[ext_resource type="Texture2D" uid="uid://b756wox5cgbwa" path="res://assets/textures/gameplay/props/checkpoints.png" id="2_vfuc3"]
+[ext_resource type="Texture2D" uid="uid://bm6252rjldha4" path="res://assets/textures/gameplay/props/cp_end.png" id="2_dgm0x"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r6hke"]
 blend_mode = 1
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_tnhlw"]
 resource_local_to_scene = true
-b = Vector2(0, 0)
+b = Vector2(32.16, 0)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s20m7"]
 blend_mode = 1
 
-[node name="Checkpoint" type="Node2D"]
+[node name="Checkpoint" type="Node2D" groups=["Checkpoint"]]
 script = ExtResource("1_8703h")
+point_b = Vector2(32.16, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -24,18 +25,19 @@ shape = SubResource("SegmentShape2D_tnhlw")
 
 [node name="Line2D" type="Line2D" parent="."]
 material = SubResource("CanvasItemMaterial_s20m7")
-points = PackedVector2Array(0, 0, 0, 0)
+points = PackedVector2Array(0, 0, 32.16, 0)
 width = 4.0
-default_color = Color(0.17184411, 1, 0, 0.8)
+default_color = Color(0.17184411, 1, 0, 0.3)
 texture_mode = 1
 
 [node name="PointA" type="Sprite2D" parent="."]
-texture = ExtResource("2_vfuc3")
+texture = ExtResource("2_dgm0x")
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)
 
 [node name="PointB" type="Sprite2D" parent="."]
-texture = ExtResource("2_vfuc3")
+position = Vector2(32.16, 0)
+texture = ExtResource("2_dgm0x")
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)
 

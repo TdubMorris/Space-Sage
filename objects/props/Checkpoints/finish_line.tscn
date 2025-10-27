@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://csx6s5n8vug2u"]
+
+[ext_resource type="Texture2D" uid="uid://cqhxr5mbutlay" path="res://assets/textures/gameplay/props/finish_fill.png" id="1_hmmmy"]
+[ext_resource type="Script" uid="uid://bquugnsifqgsy" path="res://objects/props/Checkpoints/finish_line.gd" id="1_l4yem"]
+[ext_resource type="Texture2D" uid="uid://b5xljw5w5agfe" path="res://assets/textures/gameplay/props/finish_end.png" id="2_l4yem"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r6hke"]
+blend_mode = 1
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tnhlw"]
+resource_local_to_scene = true
+b = Vector2(0, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s20m7"]
+blend_mode = 1
+
+[node name="FinishLine" type="Node2D" groups=["Checkpoint"]]
+script = ExtResource("1_l4yem")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+material = SubResource("CanvasItemMaterial_r6hke")
+shape = SubResource("SegmentShape2D_tnhlw")
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource("CanvasItemMaterial_s20m7")
+points = PackedVector2Array(0, 0, 0, 0)
+width = 4.0
+texture = ExtResource("1_hmmmy")
+texture_mode = 1
+
+[node name="PointA" type="Sprite2D" parent="."]
+texture = ExtResource("2_l4yem")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="PointB" type="Sprite2D" parent="."]
+texture = ExtResource("2_l4yem")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bsdshcdu1ny7w" path="res://objects/scenes/Menu/menu.gd" id="1_y4llj"]
 [ext_resource type="Shader" uid="uid://bpdsgu1q7pp58" path="res://assets/shaders/contrast.gdshader" id="2_bac01"]
 [ext_resource type="PackedScene" uid="uid://5r0bef3luprn" path="res://objects/scenes/Menu/menu_level.tscn" id="3_htruo"]
-[ext_resource type="Theme" uid="uid://dxn6osqn7hlvi" path="res://objects/gui/theme.tres" id="3_pyigc"]
+[ext_resource type="Theme" uid="uid://dxn6osqn7hlvi" path="res://assets/themes/hologram_button.tres" id="3_pyigc"]
 [ext_resource type="Shader" uid="uid://rgj3icvt676e" path="res://assets/shaders/blur.gdshader" id="3_y4llj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bac01"]
@@ -21,13 +21,13 @@ shader_parameter/glow = false
 shader = ExtResource("3_y4llj")
 shader_parameter/lod = 3.0000000447036
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyigc"]
-shader = ExtResource("3_y4llj")
-shader_parameter/lod = 1.0000000149012
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jwr84"]
 shader = ExtResource("3_y4llj")
-shader_parameter/lod = 1.0000000149012
+shader_parameter/lod = 3.0000000447036
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyigc"]
+shader = ExtResource("3_y4llj")
+shader_parameter/lod = 3.0000000447036
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_htruo"]
 shader = ExtResource("1_7ijjg")
@@ -100,29 +100,39 @@ offset_right = 128.0
 grow_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="Button" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
+[node name="Play" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
 z_index = 1
 material = SubResource("ShaderMaterial_te41c")
-custom_minimum_size = Vector2(128, 96)
+custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("3_pyigc")
 theme_override_constants/outline_size = 0
 text = "Play"
 
-[node name="Button2" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
+[node name="Multiplayer" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
+z_index = 1
+material = SubResource("ShaderMaterial_jwr84")
+custom_minimum_size = Vector2(128, 72)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_pyigc")
+text = "Local Multiplayer
+"
+
+[node name="Editor" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
 z_index = 1
 material = SubResource("ShaderMaterial_pyigc")
-custom_minimum_size = Vector2(128, 96)
+custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("3_pyigc")
 text = "Level Editor"
 
-[node name="Button3" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
+[node name="Settings" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
 z_index = 1
 material = SubResource("ShaderMaterial_jwr84")
-custom_minimum_size = Vector2(128, 96)
+custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("3_pyigc")
@@ -156,4 +166,4 @@ mouse_filter = 2
 [node name="MenuLevel" parent="." instance=ExtResource("3_htruo")]
 position = Vector2(-37, -33)
 
-[connection signal="pressed" from="MenuGUI/MarginContainer/Control/VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MenuGUI/MarginContainer/Control/VBoxContainer2/Play" to="." method="_on_button_pressed"]

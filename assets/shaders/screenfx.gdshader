@@ -43,7 +43,7 @@ void fragment() {
 
 	//vignette
 	if(vignette) {
-		col *= 1.0 - 0.7 * distance(SCREEN_UV, vec2(0.5, 0.5));
+		col *= 1.0 - 0.6 * distance(SCREEN_UV, vec2(0.5, 0.5));
 	}
 
 	COLOR = vec4(col, 1.0);

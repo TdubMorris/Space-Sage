@@ -19,6 +19,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 radius = 8.0
 
 [node name="CompOpponent" type="RigidBody2D"]
+process_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_p26fh")
 gravity_scale = 0.0
 continuous_cd = 2
@@ -33,6 +34,7 @@ rotation_curve = SubResource("Curve_p26fh")
 metadata/_custom_type_script = "uid://bnycwwcyo788r"
 
 [node name="Sprite" type="Sprite2D" parent="."]
+process_mode = 1
 position = Vector2(2, 0)
 rotation = 1.5708
 texture = ExtResource("2_p26fh")
