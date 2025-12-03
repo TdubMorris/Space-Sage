@@ -46,8 +46,9 @@ rotation = 1.1702867
 [node name="Players" type="Node" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("6_42wss")]
-modulate = Color(0.9921875, 1, 0, 1)
+modulate = Color(1, 1, 0, 1)
 position = Vector2(78, 3)
+rotation = -0.0007741528
 
 [node name="Visuals" type="Node" parent="."]
 

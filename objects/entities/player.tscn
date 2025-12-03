@@ -57,3 +57,7 @@ position_smoothing_enabled = true
 
 [node name="BulletSpawn" type="Marker2D" parent="."]
 position = Vector2(9, 0)
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
