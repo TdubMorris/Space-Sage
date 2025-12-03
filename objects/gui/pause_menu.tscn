@@ -1,25 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3ptx08mcaj2s"]
+[gd_scene load_steps=5 format=3 uid="uid://b3ptx08mcaj2s"]
 
 [ext_resource type="FontFile" uid="uid://dburxiwbvmo73" path="res://assets/themes/fonts/AnonymousPro-Regular.ttf" id="1_4eddb"]
 [ext_resource type="Script" uid="uid://b8gxghlehhd4r" path="res://objects/gui/pause_menu.gd" id="1_7ei8y"]
-[ext_resource type="Shader" uid="uid://rgj3icvt676e" path="res://assets/shaders/blur.gdshader" id="1_kmrqu"]
 [ext_resource type="Theme" uid="uid://dxn6osqn7hlvi" path="res://assets/themes/hologram_button.tres" id="3_sblau"]
 
 [sub_resource type="Theme" id="Theme_kmrqu"]
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_4eddb")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmppc"]
-shader = ExtResource("1_kmrqu")
-shader_parameter/lod = 4.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyp4r"]
-shader = ExtResource("1_kmrqu")
-shader_parameter/lod = 4.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ckr"]
-shader = ExtResource("1_kmrqu")
-shader_parameter/lod = 4.0
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -65,27 +52,27 @@ theme_override_constants/separation = 8
 
 [node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_vmppc")
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_sblau")
 text = "Resume
 "
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_cyp4r")
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_sblau")
 text = "Settings
 "
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_d1ckr")
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_sblau")
 text = "Quit
 "

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6cwov5spe5uw"]
+[gd_scene load_steps=11 format=3 uid="uid://c6cwov5spe5uw"]
 
 [ext_resource type="Script" uid="uid://bwdp4ifgkq5" path="res://objects/scenes/game_overlay.gd" id="1_ec5mu"]
 [ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="2_xd00m"]
@@ -9,12 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://brew3f7lkksel" path="res://objects/scenes/debug_level.tscn" id="7_2shis"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_df840"]
+resource_local_to_scene = true
+shader = ExtResource("2_xd00m")
+shader_parameter/invert = false
+shader_parameter/chrome_ab = 0.0
+shader_parameter/vignette = false
+shader_parameter/scanline_height = 8.0
+shader_parameter/bulge = true
+shader_parameter/glow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ec5mu"]
 shader = ExtResource("2_xd00m")
 shader_parameter/invert = false
 shader_parameter/chrome_ab = 1.0
 shader_parameter/vignette = true
 shader_parameter/scanline_height = 8.0
-shader_parameter/bulge = true
+shader_parameter/bulge = false
 shader_parameter/glow = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b62bx"]
@@ -30,20 +40,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ec5mu")
 
-[node name="ScreenFX" type="CanvasLayer" parent="."]
+[node name="Bulge" type="CanvasLayer" parent="."]
 
-[node name="ScreenFXShader" type="ColorRect" parent="ScreenFX"]
+[node name="ScreenFXShader" type="ColorRect" parent="Bulge"]
 material = SubResource("ShaderMaterial_df840")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Contrast" type="CanvasLayer" parent="."]
-
-[node name="ContrastShader" type="ColorRect" parent="Contrast"]
-material = SubResource("ShaderMaterial_b62bx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -54,9 +54,32 @@ grow_vertical = 2
 
 [node name="Mobile Interface" parent="Overlay" instance=ExtResource("4_rbc3i")]
 
-[node name="GameTimer" parent="Overlay" instance=ExtResource("5_ppwt1")]
-
 [node name="PauseMenu" parent="Overlay" instance=ExtResource("6_0d0nn")]
 unique_name_in_owner = true
+
+[node name="OtherFX" type="CanvasLayer" parent="."]
+
+[node name="ScreenFXShader" type="ColorRect" parent="OtherFX"]
+material = SubResource("ShaderMaterial_ec5mu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GameHud" parent="OtherFX" instance=ExtResource("5_ppwt1")]
+mouse_filter = 2
+
+[node name="Contrast" type="CanvasLayer" parent="."]
+
+[node name="ContrastShader" type="ColorRect" parent="Contrast"]
+material = SubResource("ShaderMaterial_b62bx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="BasicLevel" parent="." instance=ExtResource("7_2shis")]

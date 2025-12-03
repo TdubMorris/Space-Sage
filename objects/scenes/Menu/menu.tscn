@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5iktbsxvg4om"]
+[gd_scene load_steps=12 format=3 uid="uid://b5iktbsxvg4om"]
 
 [ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="1_7ijjg"]
 [ext_resource type="Texture2D" uid="uid://rk4t45yma43a" path="res://assets/textures/gui/spacesage.png" id="1_bac01"]
@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://bpdsgu1q7pp58" path="res://assets/shaders/contrast.gdshader" id="2_bac01"]
 [ext_resource type="PackedScene" uid="uid://5r0bef3luprn" path="res://objects/scenes/Menu/menu_level.tscn" id="3_htruo"]
 [ext_resource type="Theme" uid="uid://dxn6osqn7hlvi" path="res://assets/themes/hologram_button.tres" id="3_pyigc"]
-[ext_resource type="Shader" uid="uid://rgj3icvt676e" path="res://assets/shaders/blur.gdshader" id="3_y4llj"]
+[ext_resource type="Script" uid="uid://cchel0amafqfb" path="res://objects/gui/label.gd" id="6_te41c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bac01"]
 shader = ExtResource("1_7ijjg")
@@ -17,17 +17,7 @@ shader_parameter/scanline_height = 0.0
 shader_parameter/bulge = true
 shader_parameter/glow = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_te41c"]
-shader = ExtResource("3_y4llj")
-shader_parameter/lod = 3.0000000447036
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwr84"]
-shader = ExtResource("3_y4llj")
-shader_parameter/lod = 3.0000000447036
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyigc"]
-shader = ExtResource("3_y4llj")
-shader_parameter/lod = 3.0000000447036
+[sub_resource type="LabelSettings" id="LabelSettings_jwr84"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_htruo"]
 shader = ExtResource("1_7ijjg")
@@ -72,9 +62,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 72
+theme_override_constants/margin_left = 96
 theme_override_constants/margin_top = 72
-theme_override_constants/margin_right = 72
+theme_override_constants/margin_right = 96
 theme_override_constants/margin_bottom = 72
 
 [node name="Control" type="Control" parent="MenuGUI/MarginContainer"]
@@ -102,7 +92,6 @@ theme_override_constants/separation = 16
 
 [node name="Play" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
 z_index = 1
-material = SubResource("ShaderMaterial_te41c")
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
 focus_mode = 0
@@ -112,7 +101,6 @@ text = "Play"
 
 [node name="Multiplayer" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
 z_index = 1
-material = SubResource("ShaderMaterial_jwr84")
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
 focus_mode = 0
@@ -122,7 +110,6 @@ text = "Local Multiplayer
 
 [node name="Editor" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
 z_index = 1
-material = SubResource("ShaderMaterial_pyigc")
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
 focus_mode = 0
@@ -131,13 +118,20 @@ text = "Level Editor"
 
 [node name="Settings" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
 z_index = 1
-material = SubResource("ShaderMaterial_jwr84")
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("3_pyigc")
 text = "Settings
 "
+
+[node name="Label" type="Label" parent="MenuGUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "eeee"
+label_settings = SubResource("LabelSettings_jwr84")
+script = ExtResource("6_te41c")
 
 [node name="OtherFX" type="CanvasLayer" parent="."]
 layer = 0

@@ -29,7 +29,7 @@ modulate = Color(1, 1, 0, 1)
 position = Vector2(706, -157)
 
 [node name="Camera2D" type="Camera2D" parent="CompOpponent"]
-zoom = Vector2(1.2, 1.2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="Path2D" type="Path2D" parent="." groups=["Path"]]
 curve = SubResource("Curve2D_s2kkm")
