@@ -35,7 +35,7 @@ func tile_interactions(tiledata: TileData, state: PhysicsDirectBodyState2D):
 	var tiletype = tiledata.get_custom_data("type")
 	if tiletype:
 		if tiletype == "bouncer":
-			state.linear_velocity = last_vel.bounce(state.get_contact_local_normal(0)) * 1.1
+			state.linear_velocity = last_vel.bounce(state.get_contact_local_normal(0)) * 1.5
 			rotation = state.linear_velocity.angle()
 
 func background_interactions(tileData: TileData, state: PhysicsDirectBodyState2D):

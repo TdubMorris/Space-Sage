@@ -23,6 +23,8 @@ func stop():
 
 func reset():
 	currentTimeSeconds = 0
+	_timerRunning = false
+	currentLap = 0
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_PAUSABLE

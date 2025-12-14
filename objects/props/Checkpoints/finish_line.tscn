@@ -9,7 +9,7 @@ blend_mode = 1
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_tnhlw"]
 resource_local_to_scene = true
-b = Vector2(0, 0)
+b = Vector2(100, 0)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s20m7"]
 blend_mode = 1
@@ -25,7 +25,7 @@ shape = SubResource("SegmentShape2D_tnhlw")
 
 [node name="Line2D" type="Line2D" parent="."]
 material = SubResource("CanvasItemMaterial_s20m7")
-points = PackedVector2Array(0, 0, 0, 0)
+points = PackedVector2Array(0, 0, 100, 0)
 width = 4.0
 texture = ExtResource("1_hmmmy")
 texture_mode = 1
@@ -36,6 +36,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)
 
 [node name="PointB" type="Sprite2D" parent="."]
+position = Vector2(100, 0)
 texture = ExtResource("2_l4yem")
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)

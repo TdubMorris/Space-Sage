@@ -14,8 +14,8 @@ func _process(delta):
 func collision_check(body : Node2D):
 	if body == shooter:
 		return
-	if body.owner.has_method("hit"):
-		body.owner.hit()
+	if body.has_method("hit"):
+		body.hit()
 	queue_free()
 
 func _on_area_2d_body_entered(body):

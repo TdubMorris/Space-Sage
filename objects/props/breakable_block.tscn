@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkv75bwbla8g0"]
+
+[ext_resource type="Texture2D" uid="uid://dbcf0rlm8uwsf" path="res://assets/textures/gameplay/props/breakblock.png" id="1_67uur"]
+[ext_resource type="Script" uid="uid://bah2m3wss1alh" path="res://objects/props/breakable_block.gd" id="1_jinte"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce4fq"]
+size = Vector2(16, 16)
+
+[node name="BreakableBlock" type="StaticBody2D"]
+script = ExtResource("1_jinte")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ce4fq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_67uur")
+hframes = 9

@@ -8,14 +8,13 @@ blend_mode = 1
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_tnhlw"]
 resource_local_to_scene = true
-b = Vector2(32.16, 0)
+b = Vector2(100, 0)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s20m7"]
 blend_mode = 1
 
 [node name="Checkpoint" type="Node2D" groups=["Checkpoint"]]
 script = ExtResource("1_8703h")
-point_b = Vector2(32.16, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -25,7 +24,7 @@ shape = SubResource("SegmentShape2D_tnhlw")
 
 [node name="Line2D" type="Line2D" parent="."]
 material = SubResource("CanvasItemMaterial_s20m7")
-points = PackedVector2Array(0, 0, 32.16, 0)
+points = PackedVector2Array(0, 0, 100, 0)
 width = 4.0
 default_color = Color(0.17184411, 1, 0, 0.3)
 texture_mode = 1
@@ -36,7 +35,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)
 
 [node name="PointB" type="Sprite2D" parent="."]
-position = Vector2(32.16, 0)
+position = Vector2(100, 0)
 texture = ExtResource("2_dgm0x")
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)

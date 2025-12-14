@@ -13,7 +13,7 @@ config_version=5
 config/name="Space Sage (4.5)"
 run/main_scene="uid://b5iktbsxvg4om"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://assets/textures/icon.svg"
+config/icon="uid://wpkj3ad13pxl"
 
 [autoload]
 
@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 folder_colors={
 "res://addons/": "purple",
 "res://assets/": "green",
+"res://editor/": "yellow",
 "res://objects/": "red"
 }
 
