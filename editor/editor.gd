@@ -14,19 +14,33 @@ enum EditMode {
 
 var mode := EditMode.TILES
 
+#region helper methods
 func is_in(pos : Vector2) -> bool:
 	return (area.global_position.x < pos.x and pos.x < area.global_position.x + area.size.x) and (area.global_position.y < pos.y and pos.y < area.global_position.y + area.size.y)
+
+func camera_local(pos : Vector2) -> Vector2:
+	return (pos-get_viewport_rect().size/2)/camera.zoom + camera.position
+
+#endregion
 
 var touches := {}
 
 func _input(event):
+	if (event is InputEventScreenTouch or event is InputEventScreenDrag) and !is_in(event.position):
+		touches.erase(event.index)
+		return
+	
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			touches[event.index] = event.position
+			touches[event.index] = {"start": event.position, "current": event.position, "previous": event.position}
 		else:
 			touches.erase(event.index)
 	elif event is InputEventScreenDrag:
-		touches[event.index] = event.position
+		if touches.has(event.index):
+			touches[event.index]["previous"] = touches[event.index]["current"]
+			touches[event.index]["current"] = event.position
+		else:
+			touches[event.index] = {"start": event.position, "current": event.position, "previous": event.position}
 	
 	tilemap_update()
 	camera_input(event)
@@ -49,14 +63,44 @@ func camera_input(event: InputEvent):
 
 #region tilemap editing
 
+enum BrushType {
+	PAINT,
+	SQUARE,
+	FILL
+}
+
 func tilemap_update():
 	if mode != EditMode.TILES:
 		return
 	if touches.size() > 0:
 		for i in touches:
-			var touch_pos = (touches[i]-get_viewport_rect().size/2)/camera.zoom + camera.position
-			var tile_pos = tilemap.local_to_map(touch_pos)
-			BetterTerrain.set_cell(tilemap, tile_pos, 2)
-			BetterTerrain.update_terrain_cell(tilemap, tile_pos)
+			var tile_pos_start = tilemap.local_to_map(camera_local(touches[0]["previous"]))
+			var tile_pos_end = tilemap.local_to_map(camera_local(touches[0]["current"]))
+			var cells = plotLine(tile_pos_start.x,tile_pos_start.y,tile_pos_end.x,tile_pos_end.y)
+			BetterTerrain.set_cells(tilemap, cells, 2)
+			BetterTerrain.update_terrain_cells(tilemap, cells)
+
+#Bresnham's Line Algorithm
+#ok yes im lazy, this helper function was made by ChatGPT, sue me
+func plotLine(x0: int, y0: int, x1: int, y1: int) -> Array[Vector2i]:
+	var points: Array[Vector2i] = []
+	var dx : int = abs(x1 - x0)
+	var dy : int = abs(y1 - y0)
+	var sx := 1 if x0 < x1 else -1
+	var sy := 1 if y0 < y1 else -1
+	var err : int = dx - dy
+	while true:
+		points.append(Vector2i(x0, y0))
+		if x0 == x1 and y0 == y1:
+			break
+		var e2 := err * 2
+		if e2 > -dy:
+			err -= dy
+			x0 += sx
+		if e2 < dx:
+			err += dx
+			y0 += sy
+	return points
+
 
 #endregion
