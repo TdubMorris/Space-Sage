@@ -5,23 +5,31 @@ extends Node2D
 @onready var area = %EditorArea
 @onready var camera = $Camera2D
 
+enum EditMode {
+	CAMERA,
+	TILES,
+	PLACE_ENTITIES,
+	EDIT_ENTITIES
+}
+
+var mode := EditMode.TILES
+
 func is_in(pos : Vector2) -> bool:
 	return (area.global_position.x < pos.x and pos.x < area.global_position.x + area.size.x) and (area.global_position.y < pos.y and pos.y < area.global_position.y + area.size.y)
 
-var touches := []
+var touches := {}
 
-func _unhandled_input(event):
-	camera_input(event)
-	if event is InputEventScreenTouch and event.pressed:
+func _input(event):
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touches[event.index] = event.position
+		else:
+			touches.erase(event.index)
+	elif event is InputEventScreenDrag:
 		touches[event.index] = event.position
-	if event is InputEventScreenTouch and not event.pressed:
-		touches.erase(event.index)
-	if event is InputEventScreenDrag:
-		touches[event.index] = event.position
-		print("test")
-
-func _process(delta):
+	
 	tilemap_update()
+	camera_input(event)
 
 #region camera control
 
@@ -42,9 +50,13 @@ func camera_input(event: InputEvent):
 #region tilemap editing
 
 func tilemap_update():
-	if touches.size() == 1:
-		var tile_pos = tilemap.local_to_map(touches[0])
-		BetterTerrain.set_cell(tilemap, tile_pos, 2)
-		BetterTerrain.update_terrain_cell(tilemap, tile_pos)
+	if mode != EditMode.TILES:
+		return
+	if touches.size() > 0:
+		for i in touches:
+			var touch_pos = (touches[i]-get_viewport_rect().size/2)/camera.zoom + camera.position
+			var tile_pos = tilemap.local_to_map(touch_pos)
+			BetterTerrain.set_cell(tilemap, tile_pos, 2)
+			BetterTerrain.update_terrain_cell(tilemap, tile_pos)
 
 #endregion
