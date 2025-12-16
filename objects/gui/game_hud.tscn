@@ -117,7 +117,7 @@ theme_override_constants/margin_bottom = 16
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("6_8qd3p")
-input_action = &"pause"
+input_action = &"Pause"
 metadata/_custom_type_script = "uid://celvyp2f2cx6s"
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer4"]

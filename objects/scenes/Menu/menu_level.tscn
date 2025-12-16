@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://5r0bef3luprn"]
 
-[ext_resource type="TileSet" uid="uid://dh682ggvssfh2" path="res://objects/scenes/tiles.tres" id="1_2ckpx"]
+[ext_resource type="TileSet" uid="uid://dh682ggvssfh2" path="res://objects/resources/tiles.tres" id="1_2ckpx"]
 [ext_resource type="Texture2D" uid="uid://ccnh7oqb5guwp" path="res://assets/textures/gameplay/backgrounds/bg.png" id="1_f2tw7"]
 [ext_resource type="PackedScene" uid="uid://b0bixhjj14j00" path="res://objects/entities/comp_opponent.tscn" id="2_f2tw7"]
 

@@ -161,3 +161,4 @@ mouse_filter = 2
 position = Vector2(-37, -33)
 
 [connection signal="pressed" from="MenuGUI/MarginContainer/Control/VBoxContainer2/Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MenuGUI/MarginContainer/Control/VBoxContainer2/Editor" to="." method="_on_editor_pressed"]

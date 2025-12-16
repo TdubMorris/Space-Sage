@@ -4,6 +4,6 @@ extends Control
 @onready var lap_label = %LapLabel
 
 # Called every frame. 'ddelta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	timer_label.text = TimeManager.getTimeLabel()
 	lap_label.text = TimeManager.getLapLabel()
