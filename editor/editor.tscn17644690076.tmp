@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drcruo7ek118" path="res://editor/editor.gd" id="1_fjngd"]
 [ext_resource type="TileSet" uid="uid://dh682ggvssfh2" path="res://objects/resources/tiles.tres" id="2_er7c6"]
-[ext_resource type="PackedScene" uid="uid://cbwfpqrk2x08t" path="res://editor/editor_sidebar.tscn" id="2_j82do"]
+[ext_resource type="Texture2D" uid="uid://b6bhtsw8tx0y2" path="res://assets/textures/godoticon.svg" id="3_er7c6"]
 
 [node name="Editor" type="Node2D"]
 script = ExtResource("1_fjngd")
@@ -11,8 +11,36 @@ script = ExtResource("1_fjngd")
 
 [node name="EditorButtons" type="CanvasLayer" parent="."]
 
-[node name="Sidebar" parent="EditorButtons" instance=ExtResource("2_j82do")]
+[node name="Control" type="Control" parent="EditorButtons"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorButtons/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EditorArea" type="Control" parent="EditorButtons/Control/HBoxContainer"]
 unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="EditorButtons/Control/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EditorButtons/Control/HBoxContainer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FPS : "
 
 [node name="EditedLevel" type="Node2D" parent="."]
 
@@ -21,3 +49,14 @@ tile_map_data = PackedByteArray("AAD6//r/AQAAAAAAAAD7//r/AQABAAAAAAD8//r/AQABAAA
 tile_set = ExtResource("2_er7c6")
 
 [node name="Entities" type="Node2D" parent="EditedLevel"]
+
+[node name="Midpoint" type="Sprite2D" parent="."]
+position = Vector2(272, -54)
+scale = Vector2(0.062499996, 0.0625)
+texture = ExtResource("3_er7c6")
+
+[node name="PrevMidpoint" type="Sprite2D" parent="."]
+modulate = Color(1, 0.9375, 0, 1)
+position = Vector2(286, -53)
+scale = Vector2(0.062499996, 0.0625)
+texture = ExtResource("3_er7c6")
