@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3ptx08mcaj2s"]
+[gd_scene format=3 uid="uid://b3ptx08mcaj2s"]
 
 [ext_resource type="FontFile" uid="uid://dburxiwbvmo73" path="res://assets/themes/fonts/AnonymousPro-Regular.ttf" id="1_4eddb"]
 [ext_resource type="Script" uid="uid://b8gxghlehhd4r" path="res://objects/gui/pause_menu.gd" id="1_7ei8y"]
@@ -8,7 +8,7 @@
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_4eddb")
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=1606346047]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7ei8y")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=536815604]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,31 +26,31 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2021045267]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -142.5
-offset_right = 256.0
+offset_right = 320.0
 offset_bottom = 142.5
 grow_vertical = 2
 theme_override_constants/margin_left = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=930302709]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=154748703]
 layout_mode = 2
 theme = SubResource("Theme_kmrqu")
 text = "Paused"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1744166133]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=430649742]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
@@ -59,7 +59,7 @@ theme = ExtResource("3_sblau")
 text = "Resume
 "
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=950148844]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
@@ -68,7 +68,7 @@ theme = ExtResource("3_sblau")
 text = "Settings
 "
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=672602495]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2

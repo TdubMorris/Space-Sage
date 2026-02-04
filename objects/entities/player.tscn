@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq6uqbalcvwc5"]
+[gd_scene format=3 uid="uid://bq6uqbalcvwc5"]
 
 [ext_resource type="Texture2D" uid="uid://bxtf1vlpbd3j1" path="res://assets/textures/gameplay/ship.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bsnpcgm0qicyo" path="res://objects/entities/player.gd" id="1_sm54d"]
@@ -14,7 +14,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 8.0
 
-[node name="Player" type="RigidBody2D" groups=["Player"]]
+[node name="Player" type="RigidBody2D" unique_id=1237775899 groups=["Player"]]
 process_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_4flbx")
 gravity_scale = 0.0
@@ -26,12 +26,12 @@ angular_damp = 5.0
 script = ExtResource("1_sm54d")
 metadata/_edit_vertical_guides_ = [-395.0]
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=489372033]
 position = Vector2(2, 0)
 rotation = 1.5708
 texture = ExtResource("1_4flbx")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=110035649]
 z_index = -1
 position = Vector2(-3, 0)
 amount = 50
@@ -48,16 +48,17 @@ scale_amount_min = 2.0
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_sm54d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1842024734]
 shape = SubResource("CircleShape2D_4flbx")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
-
-[node name="BulletSpawn" type="Marker2D" parent="."]
+[node name="BulletSpawn" type="Marker2D" parent="." unique_id=1661975836]
 position = Vector2(9, 0)
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="Cooldown" type="Timer" parent="." unique_id=918731587]
 wait_time = 0.25
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=932114080]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0

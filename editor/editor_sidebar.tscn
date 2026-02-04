@@ -1,14 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbwfpqrk2x08t"]
+[gd_scene format=3 uid="uid://cbwfpqrk2x08t"]
 
 [ext_resource type="Script" uid="uid://cvc0fkoxhcld1" path="res://editor/editor_sidebar.gd" id="1_dsxm1"]
-[ext_resource type="Texture2D" uid="uid://b6bhtsw8tx0y2" path="res://assets/textures/godoticon.svg" id="2_qcpyw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsxm1"]
 bg_color = Color(0, 0.08886719, 0.203125, 1)
 border_width_left = 4
 border_color = Color(1, 1, 1, 1)
 
-[node name="Sidebar" type="Control"]
+[node name="Sidebar" type="Control" unique_id=482858883]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dsxm1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1404539692]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,33 +25,34 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="EditorArea" type="Control" parent="HBoxContainer"]
+[node name="EditorArea" type="Control" parent="HBoxContainer" unique_id=1275911893]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Panel" type="PanelContainer" parent="HBoxContainer"]
+[node name="Panel" type="PanelContainer" parent="HBoxContainer" unique_id=150935304]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dsxm1")
 
-[node name="Label" type="Label" parent="HBoxContainer/Panel"]
+[node name="Label" type="Label" parent="HBoxContainer/Panel" unique_id=829213436]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "FPS : "
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel" unique_id=1971987562]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer" unique_id=1440778442]
 layout_mode = 2
 size_flags_vertical = 8
+alignment = 2
 
-[node name="EditModes" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="EditModes" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1661907442]
 unique_name_in_owner = true
 layout_mode = 2
 focus_behavior_recursive = 1
@@ -66,10 +66,10 @@ fixed_column_width = 96
 icon_mode = 0
 fixed_icon_size = Vector2i(64, 64)
 item_0/text = "Camera"
-item_0/icon = ExtResource("2_qcpyw")
 item_1/text = "Tiles"
-item_1/icon = ExtResource("2_qcpyw")
 item_2/text = "Entities"
-item_2/icon = ExtResource("2_qcpyw")
+
+[node name="ItemList" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1924506495]
+layout_mode = 2
 
 [connection signal="item_selected" from="HBoxContainer/Panel/MarginContainer/VBoxContainer/EditModes" to="." method="_on_item_list_item_selected"]

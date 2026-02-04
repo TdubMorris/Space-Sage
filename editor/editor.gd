@@ -28,6 +28,7 @@ func screen_to_global(pos : Vector2) -> Vector2:
 var touches := {}
 
 func _input(event):
+	
 	if (event is InputEventScreenTouch or event is InputEventScreenDrag) and !sidebar.is_in(event.position):
 		touches.erase(event.index)
 		return
@@ -44,6 +45,14 @@ func _input(event):
 		else:
 			touches[event.index] = {"start": event.position, "current": event.position, "previous": event.position}
 		camera_input()
+	
+	if event.is_action_pressed("Scroll Up") and sidebar.is_in(get_viewport().get_mouse_position()):
+		zoom_camera(1.1,get_global_mouse_position())
+	
+	if event.is_action_pressed("Scroll Down") and sidebar.is_in(get_viewport().get_mouse_position()):
+		zoom_camera(0.9,get_global_mouse_position())
+	
+	
 	
 	tilemap_update()
 #endregion

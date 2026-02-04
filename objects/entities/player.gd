@@ -16,17 +16,21 @@ extends Racer
 func _ready():
 	cooldownTimer.wait_time = cooldown
 
+
 func _physics_process(_delta):
 	if Engine.is_editor_hint():
 		return
 	if not (Input.is_action_pressed("Left") and Input.is_action_pressed("Right")):
 		thrust(500)
+		linear_damp = 1.5
 		if Input.is_action_pressed("Left"):
 			steer(-1500)
 		elif Input.is_action_pressed("Right"):
 			steer(1500)
 		if Input.is_action_pressed("Shoot"):
 			spawn_bullet()
+	else:
+		linear_damp = 0
 
 func spawn_bullet():
 	if not cooldownTimer.is_stopped():

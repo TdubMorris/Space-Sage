@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://brew3f7lkksel"]
+[gd_scene load_steps=7 format=4 uid="uid://brew3f7lkksel"]
 
 [ext_resource type="TileSet" uid="uid://dh682ggvssfh2" path="res://objects/resources/tiles.tres" id="1_0scpf"]
 [ext_resource type="PackedScene" uid="uid://csx6s5n8vug2u" path="res://objects/props/Checkpoints/finish_line.tscn" id="3_42wss"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dr3ay7figsdg2" path="res://objects/props/Checkpoints/checkpoint.tscn" id="4_xwcnx"]
 [ext_resource type="Texture2D" uid="uid://ccnh7oqb5guwp" path="res://assets/textures/gameplay/backgrounds/bg.png" id="5_gk6pe"]
 [ext_resource type="PackedScene" uid="uid://bq6uqbalcvwc5" path="res://objects/entities/player.tscn" id="6_42wss"]
-[ext_resource type="PackedScene" uid="uid://bkv75bwbla8g0" path="res://objects/props/breakable_block.tscn" id="7_l61mf"]
 
 [node name="BasicLevel" type="Node2D"]
 
@@ -46,69 +45,6 @@ rotation = 1.6185154
 [node name="Booster" parent="Props" instance=ExtResource("4_42wss")]
 position = Vector2(-433, 79)
 rotation = 1.1702867
-
-[node name="BreakableBlock" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(-152, 24)
-
-[node name="BreakableBlock2" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(-152, 8)
-
-[node name="BreakableBlock3" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(-152, -24)
-
-[node name="BreakableBlock4" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(-152, -8)
-
-[node name="BreakableBlock5" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(-152, -40)
-
-[node name="BreakableBlock6" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(520, 88)
-
-[node name="BreakableBlock7" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(552, 88)
-
-[node name="BreakableBlock8" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(536, 88)
-
-[node name="BreakableBlock9" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(568, 88)
-
-[node name="BreakableBlock10" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(584, 88)
-
-[node name="BreakableBlock11" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(600, 88)
-
-[node name="BreakableBlock12" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(616, 88)
-
-[node name="BreakableBlock13" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(632, 88)
-
-[node name="BreakableBlock14" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(520, 72)
-
-[node name="BreakableBlock15" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(552, 72)
-
-[node name="BreakableBlock16" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(536, 72)
-
-[node name="BreakableBlock17" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(568, 72)
-
-[node name="BreakableBlock18" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(584, 72)
-
-[node name="BreakableBlock19" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(600, 72)
-
-[node name="BreakableBlock20" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(616, 72)
-
-[node name="BreakableBlock21" parent="Props" instance=ExtResource("7_l61mf")]
-position = Vector2(632, 72)
 
 [node name="Players" type="Node" parent="."]
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5iktbsxvg4om"]
+[gd_scene format=3 uid="uid://b5iktbsxvg4om"]
 
 [ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="1_7ijjg"]
 [ext_resource type="Texture2D" uid="uid://rk4t45yma43a" path="res://assets/textures/gui/spacesage.png" id="1_bac01"]
 [ext_resource type="Script" uid="uid://bsdshcdu1ny7w" path="res://objects/scenes/Menu/menu.gd" id="1_y4llj"]
-[ext_resource type="Shader" uid="uid://bpdsgu1q7pp58" path="res://assets/shaders/contrast.gdshader" id="2_bac01"]
 [ext_resource type="PackedScene" uid="uid://5r0bef3luprn" path="res://objects/scenes/Menu/menu_level.tscn" id="3_htruo"]
 [ext_resource type="Theme" uid="uid://dxn6osqn7hlvi" path="res://assets/themes/hologram_button.tres" id="3_pyigc"]
 [ext_resource type="Script" uid="uid://cchel0amafqfb" path="res://objects/gui/label.gd" id="6_te41c"]
@@ -12,26 +11,36 @@
 shader = ExtResource("1_7ijjg")
 shader_parameter/invert = false
 shader_parameter/chrome_ab = 0.0
-shader_parameter/vignette = true
 shader_parameter/scanline_height = 0.0
 shader_parameter/bulge = true
-shader_parameter/glow = false
+shader_parameter/vignette = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_jwr84"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_htruo"]
+resource_local_to_scene = true
 shader = ExtResource("1_7ijjg")
 shader_parameter/invert = false
 shader_parameter/chrome_ab = 0.9
-shader_parameter/vignette = false
 shader_parameter/scanline_height = 8.0
 shader_parameter/bulge = false
-shader_parameter/glow = true
+shader_parameter/vignette = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4llj"]
-shader = ExtResource("2_bac01")
+[sub_resource type="Environment" id="Environment_pyigc"]
+background_mode = 3
+background_canvas_max_layer = 5
+tonemap_exposure = 1.2
+glow_enabled = true
+glow_levels/2 = 0.2
+glow_levels/3 = 0.1
+glow_levels/4 = 0.05
+glow_strength = 1.5
+glow_blend_mode = 0
+glow_hdr_threshold = 0.1
+glow_hdr_scale = 0.0
+glow_map_strength = 1.0
 
-[node name="Menu" type="Control"]
+[node name="Menu" type="Control" unique_id=100822948]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,10 +50,10 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_y4llj")
 
-[node name="Bulge" type="CanvasLayer" parent="."]
+[node name="UndeMenuShaders" type="CanvasLayer" parent="." unique_id=2003375560]
 layer = 0
 
-[node name="ScreenFXShader" type="ColorRect" parent="Bulge"]
+[node name="ScreenFXShader" type="ColorRect" parent="UndeMenuShaders" unique_id=798104863]
 material = SubResource("ShaderMaterial_bac01")
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,10 +62,10 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="MenuGUI" type="CanvasLayer" parent="."]
+[node name="MenuGUI" type="CanvasLayer" parent="." unique_id=914271859]
 layer = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="MenuGUI"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuGUI" unique_id=983020336]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -67,19 +76,18 @@ theme_override_constants/margin_top = 72
 theme_override_constants/margin_right = 96
 theme_override_constants/margin_bottom = 72
 
-[node name="Control" type="Control" parent="MenuGUI/MarginContainer"]
+[node name="Control" type="Control" parent="MenuGUI/MarginContainer" unique_id=583446026]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuGUI/MarginContainer/Control"]
-modulate = Color(0.75390625, 0.75390625, 0.75390625, 1)
+[node name="TextureRect" type="TextureRect" parent="MenuGUI/MarginContainer/Control" unique_id=636139216]
 custom_minimum_size = Vector2(312, 128)
 layout_mode = 0
 offset_right = 312.0
 offset_bottom = 128.0
 texture = ExtResource("1_bac01")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MenuGUI/MarginContainer/Control"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MenuGUI/MarginContainer/Control" unique_id=309057783]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 1
 anchors_preset = 2
@@ -90,7 +98,7 @@ offset_right = 128.0
 grow_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="Play" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
+[node name="Play" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2" unique_id=700606675]
 z_index = 1
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
@@ -99,7 +107,7 @@ theme = ExtResource("3_pyigc")
 theme_override_constants/outline_size = 0
 text = "Play"
 
-[node name="Multiplayer" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
+[node name="Multiplayer" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2" unique_id=2035568263]
 z_index = 1
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
@@ -108,7 +116,7 @@ theme = ExtResource("3_pyigc")
 text = "Local Multiplayer
 "
 
-[node name="Editor" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
+[node name="Editor" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2" unique_id=1763277412]
 z_index = 1
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
@@ -116,7 +124,7 @@ focus_mode = 0
 theme = ExtResource("3_pyigc")
 text = "Level Editor"
 
-[node name="Settings" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2"]
+[node name="Settings" type="Button" parent="MenuGUI/MarginContainer/Control/VBoxContainer2" unique_id=416967461]
 z_index = 1
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
@@ -125,7 +133,7 @@ theme = ExtResource("3_pyigc")
 text = "Settings
 "
 
-[node name="Label" type="Label" parent="MenuGUI/MarginContainer"]
+[node name="Label" type="Label" parent="MenuGUI/MarginContainer" unique_id=1545077799]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -133,10 +141,10 @@ text = "eeee"
 label_settings = SubResource("LabelSettings_jwr84")
 script = ExtResource("6_te41c")
 
-[node name="OtherFX" type="CanvasLayer" parent="."]
+[node name="AboveMenuShaders" type="CanvasLayer" parent="." unique_id=1280665128]
 layer = 0
 
-[node name="ScreenFXShader" type="ColorRect" parent="OtherFX"]
+[node name="ScreenFXShader" type="ColorRect" parent="AboveMenuShaders" unique_id=2054331129]
 material = SubResource("ShaderMaterial_htruo")
 anchors_preset = 15
 anchor_right = 1.0
@@ -146,19 +154,11 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Contrast" type="CanvasLayer" parent="."]
+[node name="MenuLevel" parent="." unique_id=1197799623 instance=ExtResource("3_htruo")]
+position = Vector2(20, 618)
 
-[node name="ContrastShader" type="ColorRect" parent="Contrast"]
-material = SubResource("ShaderMaterial_y4llj")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="MenuLevel" parent="." instance=ExtResource("3_htruo")]
-position = Vector2(-37, -33)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1569545517]
+environment = SubResource("Environment_pyigc")
 
 [connection signal="pressed" from="MenuGUI/MarginContainer/Control/VBoxContainer2/Play" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MenuGUI/MarginContainer/Control/VBoxContainer2/Editor" to="." method="_on_editor_pressed"]

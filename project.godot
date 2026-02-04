@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Space Sage (4.5)"
+config/name="Space Sage"
 run/main_scene="uid://b5iktbsxvg4om"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://dejnyawh6q2on"
 
 [autoload]
@@ -29,7 +29,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/tdubs-pluggin/plugin.cfg")
 
 [file_customization]
 
@@ -104,6 +104,5 @@ textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.3046875, 0.3046875, 0.3046875, 1)
 anti_aliasing/quality/use_debanding=true
-2d/snap/snap_2d_vertices_to_pixel=true
+environment/defaults/default_clear_color=Color(0.3046875, 0.3046875, 0.3046875, 1)

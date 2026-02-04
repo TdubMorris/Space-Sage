@@ -7,6 +7,7 @@
 size = Vector2(16, 16)
 
 [node name="BreakableBlock" type="StaticBody2D"]
+process_mode = 1
 script = ExtResource("1_jinte")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -15,3 +16,7 @@ shape = SubResource("RectangleShape2D_ce4fq")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_67uur")
 hframes = 9
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(4170, -15)
+rect = Rect2(-24, -10, 34, 20)

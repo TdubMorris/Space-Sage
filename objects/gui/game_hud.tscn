@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0ntoyywjbh2w"]
+[gd_scene format=3 uid="uid://c0ntoyywjbh2w"]
 
 [ext_resource type="Script" uid="uid://4xskp8oxs8dx" path="res://objects/gui/game_hud.gd" id="1_tvqvj"]
 [ext_resource type="Texture2D" uid="uid://c4pkg1gkf1bxi" path="res://assets/textures/gui/banner.png" id="2_k0xv8"]
@@ -15,7 +15,7 @@
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("2_tvqvj")
 
-[node name="GameHUD" type="Control"]
+[node name="GameHUD" type="Control" unique_id=1367443628]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tvqvj")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1787895664]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -40,7 +40,7 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer" unique_id=2048933955]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -48,7 +48,7 @@ text = "eeee"
 label_settings = SubResource("LabelSettings_8qd3p")
 script = ExtResource("5_lyd02")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=276677180]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -62,12 +62,12 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=845992304]
 modulate = Color(0, 0, 0, 0.5)
 layout_mode = 2
 texture = ExtResource("2_k0xv8")
 
-[node name="TimerLabel" type="Label" parent="MarginContainer2"]
+[node name="TimerLabel" type="Label" parent="MarginContainer2" unique_id=1582228964]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
@@ -75,7 +75,7 @@ theme = SubResource("Theme_m8msq")
 text = "00:00.000"
 horizontal_alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="."]
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=1630254456]
 layout_mode = 1
 offset_right = 280.0
 offset_bottom = 88.0
@@ -85,13 +85,13 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer3"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer3" unique_id=543328587]
 modulate = Color(0, 0, 0, 0.5)
 layout_mode = 2
 texture = ExtResource("2_k0xv8")
 flip_h = true
 
-[node name="LapLabel" type="Label" parent="MarginContainer3"]
+[node name="LapLabel" type="Label" parent="MarginContainer3" unique_id=2118673828]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
@@ -99,7 +99,7 @@ theme = SubResource("Theme_m8msq")
 text = "LAP 1/3"
 horizontal_alignment = 1
 
-[node name="MarginContainer4" type="MarginContainer" parent="."]
+[node name="MarginContainer4" type="MarginContainer" parent="." unique_id=151043182]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -113,14 +113,14 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="InterfaceTouchButton" type="Control" parent="MarginContainer4"]
+[node name="InterfaceTouchButton" type="Control" parent="MarginContainer4" unique_id=420529809]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("6_8qd3p")
 input_action = &"Pause"
 metadata/_custom_type_script = "uid://celvyp2f2cx6s"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer4"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer4" unique_id=188557689]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
