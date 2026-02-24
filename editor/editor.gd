@@ -26,24 +26,54 @@ func screen_to_global(pos : Vector2) -> Vector2:
 #region - Input Handeling
 
 var touches := {}
+var mm := {} #used for middle mouse panning
+
+func _process(delta: float):
+	for touch in touches:
+		touches[touch]["time"] += delta
+	
+	#middle mouse camera pan
+	if Input.is_action_pressed("Pan") and sidebar.is_in(get_viewport().get_mouse_position()):
+		print("test")
+		if mm.size() == 2:
+			var movement = mm["cur"]-mm["prev"]
+			camera.position -= movement/camera.zoom.x
+			mm["prev"] = mm["cur"]
+			mm["cur"] = get_viewport().get_mouse_position()
+		elif mm.size() == 1:
+			mm["prev"] = mm["cur"]
+			mm["cur"] = get_viewport().get_mouse_position()
+		elif mm.size() == 0:
+			mm["cur"] = get_viewport().get_mouse_position()
+	else:
+		mm = {}
+	
+	
+	
+	
 
 func _input(event):
-	
 	if (event is InputEventScreenTouch or event is InputEventScreenDrag) and !sidebar.is_in(event.position):
 		touches.erase(event.index)
 		return
 	
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			touches[event.index] = {"start": event.position, "current": event.position, "previous": event.position}
+			touches[event.index] = {"start": event.position, "current": event.position, "previous": event.position, "time": 0}
+			for touch in touches:
+				touches[touch]["time"] = 0
 		else:
 			touches.erase(event.index)
+			for touch in touches:
+				touches[touch]["time"] = 0
 	elif event is InputEventScreenDrag:
 		if touches.has(event.index):
 			touches[event.index]["previous"] = touches[event.index]["current"]
 			touches[event.index]["current"] = event.position
 		else:
-			touches[event.index] = {"start": event.position, "current": event.position, "previous": event.position}
+			touches[event.index] = {"start": event.position, "current": event.position, "previous": event.position, "time": 0}
+			for touch in touches:
+				touches[touch]["time"] = 0
 		camera_input()
 	
 	if event.is_action_pressed("Scroll Up") and sidebar.is_in(get_viewport().get_mouse_position()):
@@ -51,8 +81,6 @@ func _input(event):
 	
 	if event.is_action_pressed("Scroll Down") and sidebar.is_in(get_viewport().get_mouse_position()):
 		zoom_camera(0.9,get_global_mouse_position())
-	
-	
 	
 	tilemap_update()
 #endregion
@@ -67,6 +95,8 @@ func SidebarClick(id : String):
 			mode = EditMode.TILES
 		"mode:2":
 			mode = EditMode.ENTITIES
+		"playtest":
+			playtest()
 
 #endregion
 
@@ -101,7 +131,8 @@ func radius(type:String = "current"):
 	return rad
 
 func camera_input():
-	if mode != EditMode.CAMERA or touches.size() == 0:
+	
+	if touches.size() <= 1:
 		return
 	
 	var mid : Vector2 = midpoint()
@@ -130,13 +161,15 @@ enum BrushType {
 func tilemap_update():
 	if mode != EditMode.TILES:
 		return
-	if touches.size() > 0:
-		for i in touches:
-			var tile_pos_start = tilemap.local_to_map(screen_to_global(touches[i]["previous"]))
-			var tile_pos_end = tilemap.local_to_map(screen_to_global(touches[i]["current"]))
-			var cells = plotLine(tile_pos_start.x,tile_pos_start.y,tile_pos_end.x,tile_pos_end.y)
-			BetterTerrain.set_cells(tilemap, cells, 2)
-			BetterTerrain.update_terrain_cells(tilemap, cells)
+	if touches.size() != 1 or touches[touches.keys()[0]]["time"] < 0.05:
+		return
+	
+	for i in touches:
+		var tile_pos_start = tilemap.local_to_map(screen_to_global(touches[i]["previous"]))
+		var tile_pos_end = tilemap.local_to_map(screen_to_global(touches[i]["current"]))
+		var cells = plotLine(tile_pos_start.x,tile_pos_start.y,tile_pos_end.x,tile_pos_end.y)
+		BetterTerrain.set_cells(tilemap, cells, 2)
+		BetterTerrain.update_terrain_cells(tilemap, cells)
 
 #Bresnham's Line Algorithm
 #ok yes im lazy, this helper function was made by ChatGPT, sue me or something (please dont)
@@ -160,5 +193,16 @@ func plotLine(x0: int, y0: int, x1: int, y1: int) -> Array[Vector2i]:
 			y0 += sy
 	return points
 
+#endregion
+
+#region - Level Saving and Loading
+
+func playtest():
+	loadLevel(level.duplicate())
+
+func loadLevel(levelNode: Node):
+	var gamescreen = preload("res://objects/scenes/gamescreen.tscn").instantiate()
+	gamescreen.add_child(levelNode)
+	get_tree().change_scene_to_node(gamescreen)
 
 #endregion

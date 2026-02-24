@@ -39,6 +39,9 @@ glow_blend_mode = 0
 glow_hdr_threshold = 0.1
 glow_hdr_scale = 0.0
 glow_map_strength = 1.0
+adjustment_enabled = true
+adjustment_brightness = 1.2
+adjustment_saturation = 1.7
 
 [node name="Menu" type="Control" unique_id=100822948]
 layout_mode = 3
@@ -155,7 +158,7 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="MenuLevel" parent="." unique_id=1197799623 instance=ExtResource("3_htruo")]
-position = Vector2(20, 618)
+position = Vector2(24, 495)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1569545517]
 environment = SubResource("Environment_pyigc")

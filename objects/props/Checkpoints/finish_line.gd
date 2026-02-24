@@ -16,9 +16,9 @@ extends Node2D
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		if TimeManager.currentLap == 0:
-			TimeManager.start()
-			TimeManager.lap()
+		if RaceManager.currentLap == 0:
+			RaceManager.start()
+			RaceManager.lap()
 			return
 		
 		
@@ -31,12 +31,12 @@ func _on_area_2d_body_entered(body):
 			if node.triggered == false:
 				return
 		
-		if TimeManager.currentLap == TimeManager.maxLaps:
+		if RaceManager.currentLap == RaceManager.maxLaps:
 			segment.hide()
-			TimeManager.lap()
+			RaceManager.lap()
 			return
 		
-		TimeManager.lap()
+		RaceManager.lap()
 		
 		for node in checkpoints:
 				node.triggered = false

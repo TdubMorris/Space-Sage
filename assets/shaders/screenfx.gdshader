@@ -8,19 +8,6 @@ uniform float scanline_height;
 uniform bool bulge;
 uniform bool vignette;
 
-mat4 saturationMatrix(float s){
-	vec3 lum = vec3(0.3086, 0.6094, 0.0820);
-	float sr = (1.0-s) * lum.r;
-	float sg = (1.0-s) * lum.g;
-	float sb = (1.0-s) * lum.b;
-	return mat4(
-		vec4(sr+s, sr, sr, 0),
-		vec4(sg, sg+s, sg, 0),
-		vec4(sb, sb, sb+s, 0),
-		vec4(0, 0, 0, 1)
-	);
-}
-
 void fragment() {
 	//screen bend
 	vec2 sample_pos;
@@ -50,7 +37,6 @@ void fragment() {
 		col = mix(col, vec3(0,0,0), dist+dither);
 	}
 	
-	col = (saturationMatrix(1.5) * vec4(col, 1.0)).rgb;
 	
 	COLOR = vec4(col, 1.0);
 }

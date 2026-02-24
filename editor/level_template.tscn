@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bw2hwomtxvqkk"]
+
+[node name="LevelTemplate" type="Node2D" unique_id=1074059758]
+
+[node name="Entities" type="Node" parent="." unique_id=966347972]
+
+[node name="Visuals" type="Node" parent="." unique_id=1187990151]

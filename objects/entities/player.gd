@@ -31,6 +31,8 @@ func _physics_process(_delta):
 			spawn_bullet()
 	else:
 		linear_damp = 0
+	
+	
 
 func spawn_bullet():
 	if not cooldownTimer.is_stopped():

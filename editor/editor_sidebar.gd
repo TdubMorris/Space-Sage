@@ -3,11 +3,11 @@ extends Control
 @onready var area = %EditorArea
 @onready var modes = %EditModes
 
-
 signal sidebar_click(id : String)
 
 func _ready():
 	modes.select(0)
+	%PlayButton.pressed.connect(func(): sidebar_click.emit("playtest"))
 
 func _process(delta):
 	$HBoxContainer/Panel/Label.text = "FPS: %d" % [1/delta]

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://c6cwov5spe5uw"]
+
+[ext_resource type="Script" uid="uid://bwdp4ifgkq5" path="res://objects/scenes/gamescreen.gd" id="1_dd1cc"]
+[ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="2_5iuyo"]
+[ext_resource type="PackedScene" uid="uid://dvtamvwejubpg" path="res://objects/gui/button_interface.tscn" id="3_4qr7b"]
+[ext_resource type="PackedScene" uid="uid://b3ptx08mcaj2s" path="res://objects/gui/pause_menu.tscn" id="4_4gj3e"]
+[ext_resource type="PackedScene" uid="uid://c0ntoyywjbh2w" path="res://objects/gui/game_hud.tscn" id="5_fkm52"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_df840"]
+resource_local_to_scene = true
+shader = ExtResource("2_5iuyo")
+shader_parameter/invert = false
+shader_parameter/chrome_ab = 1.1
+shader_parameter/scanline_height = 0.0
+shader_parameter/bulge = false
+shader_parameter/vignette = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgax4"]
+resource_local_to_scene = true
+shader = ExtResource("2_5iuyo")
+shader_parameter/invert = false
+shader_parameter/chrome_ab = 0.0
+shader_parameter/scanline_height = 8.0
+shader_parameter/bulge = false
+shader_parameter/vignette = false
+
+[sub_resource type="Environment" id="Environment_bw7ag"]
+background_mode = 3
+background_canvas_max_layer = 2
+tonemap_exposure = 1.2
+glow_enabled = true
+glow_levels/2 = 0.2
+glow_levels/3 = 0.1
+glow_levels/4 = 0.05
+glow_strength = 1.5
+glow_blend_mode = 0
+glow_hdr_threshold = 0.1
+glow_hdr_scale = 0.0
+adjustment_enabled = true
+adjustment_brightness = 1.2
+adjustment_saturation = 1.7
+
+[node name="GameScreen" type="Control" unique_id=1647996239]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dd1cc")
+
+[node name="Shaders" type="CanvasLayer" parent="." unique_id=1428870766]
+
+[node name="ScreenFXShader" type="ColorRect" parent="Shaders" unique_id=1777276034]
+material = SubResource("ShaderMaterial_df840")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=779837378]
+layer = 2
+
+[node name="MobileInterface" parent="Overlay" unique_id=1495860496 instance=ExtResource("3_4qr7b")]
+
+[node name="PauseMenu" parent="Overlay" unique_id=151642740 instance=ExtResource("4_4gj3e")]
+unique_name_in_owner = true
+visible = false
+
+[node name="GameHud" parent="Overlay" unique_id=1813262121 instance=ExtResource("5_fkm52")]
+mouse_filter = 2
+
+[node name="TopShaders" type="CanvasLayer" parent="." unique_id=232128663]
+layer = 3
+
+[node name="ScreenFXShader" type="ColorRect" parent="TopShaders" unique_id=1857126865]
+material = SubResource("ShaderMaterial_rgax4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1877951356]
+environment = SubResource("Environment_bw7ag")

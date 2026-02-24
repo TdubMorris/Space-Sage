@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cvc0fkoxhcld1" path="res://editor/editor_sidebar.gd" id="1_dsxm1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsxm1"]
-bg_color = Color(0, 0.08886719, 0.203125, 1)
+bg_color = Color(0.071517944, 0.09337008, 0.16796875, 1)
 border_width_left = 4
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0.03878784, 0.06347959, 0.12109375, 1)
 
 [node name="Sidebar" type="Control" unique_id=482858883]
 layout_mode = 3
@@ -52,6 +52,9 @@ layout_mode = 2
 size_flags_vertical = 8
 alignment = 2
 
+[node name="ItemList" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1924506495]
+layout_mode = 2
+
 [node name="EditModes" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1661907442]
 unique_name_in_owner = true
 layout_mode = 2
@@ -59,17 +62,18 @@ focus_behavior_recursive = 1
 allow_search = false
 auto_width = true
 auto_height = true
-item_count = 3
+item_count = 2
 max_columns = 3
 same_column_width = true
 fixed_column_width = 96
 icon_mode = 0
 fixed_icon_size = Vector2i(64, 64)
-item_0/text = "Camera"
-item_1/text = "Tiles"
-item_2/text = "Entities"
+item_0/text = "Tiles"
+item_1/text = "Entities"
 
-[node name="ItemList" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1924506495]
+[node name="PlayButton" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1946536164]
+unique_name_in_owner = true
 layout_mode = 2
+text = "Save and Playtest"
 
 [connection signal="item_selected" from="HBoxContainer/Panel/MarginContainer/VBoxContainer/EditModes" to="." method="_on_item_list_item_selected"]

@@ -25,7 +25,7 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		if TimeManager.currentLap == 0:
+		if RaceManager.currentLap == 0:
 			return
 		triggered = true
 
