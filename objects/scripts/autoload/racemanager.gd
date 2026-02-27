@@ -6,6 +6,11 @@ var _timerRunning : bool = false
 var currentTimeSeconds : float = 0
 var maxLaps : int = 3
 var currentLap : int = 0
+var raceEnded : bool = false
+
+var boost_charge_time : float = 0.75
+var boost_charge : float = 0
+
 
 func getTimeLabel() -> String:
 	var minutes : int = floori(currentTimeSeconds/60)
@@ -20,8 +25,10 @@ func start():
 
 func stop():
 	_timerRunning = false
+	raceEnded = true
 
 func reset():
+	raceEnded = false
 	currentTimeSeconds = 0
 	_timerRunning = false
 	currentLap = 0
@@ -34,7 +41,7 @@ func _process(delta : float) -> void:
 		currentTimeSeconds += delta
 
 func lap():
-	if currentLap == maxLaps:
+	if currentLap == maxLaps and not raceEnded:
 		raceEnd.emit()
 		stop()
 		return

@@ -6,7 +6,7 @@ extends Control
 func _ready():
 	pausemenu.hide()
 	RaceManager.reset()
-	pass # Replace with function body.
+	RaceManager.raceEnd.connect(show_endscreen)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,3 +15,9 @@ func _process(_delta):
 		pausemenu.show()
 		get_tree().paused = true
 	pass
+
+func show_endscreen():
+	%EndScreen.show()
+	%GameHud.queue_free()
+	%MobileInterface.queue_free()
+	

@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Space Sage"
 run/main_scene="uid://b5iktbsxvg4om"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://dejnyawh6q2on"
 

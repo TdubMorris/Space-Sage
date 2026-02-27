@@ -239,7 +239,7 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_yu0pl"]
-_data = [Vector2(0, 0.01), 0.0, 0.0022223378, 0, 0, Vector2(1, 1), 3.253352, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 3.253352, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_8qd3p"]
@@ -384,6 +384,6 @@ theme_override_constants/margin_bottom = 64
 
 [node name="Boostbar" type="TextureRect" parent="MarginContainer5" unique_id=1021242086]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(192, 24)
+custom_minimum_size = Vector2(256, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_248hg")
