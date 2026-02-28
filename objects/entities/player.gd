@@ -26,9 +26,11 @@ func _ready():
 func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
+	
 	if RaceManager.raceEnded:
 		linear_damp = 1.5
 		return
+	
 	if not (Input.is_action_pressed("Left") and Input.is_action_pressed("Right")):
 		if is_coasting and RaceManager.boost_charge >= RaceManager.boost_charge_time:
 			apply_impulse(300*Vector2.RIGHT.rotated(rotation))
@@ -38,6 +40,7 @@ func _physics_process(delta):
 		RaceManager.boost_charge = 0
 		is_coasting = false
 		particles.emitting = true
+		
 		thrust(500)
 		linear_damp = 1.5
 		if Input.is_action_pressed("Left"):

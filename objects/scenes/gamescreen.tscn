@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://bwdp4ifgkq5" path="res://objects/scenes/gamescreen.gd" id="1_dd1cc"]
 [ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="2_5iuyo"]
 [ext_resource type="PackedScene" uid="uid://dvtamvwejubpg" path="res://objects/gui/button_interface.tscn" id="3_4qr7b"]
-[ext_resource type="PackedScene" uid="uid://b3ptx08mcaj2s" path="res://objects/gui/pause_menu.tscn" id="4_4gj3e"]
+[ext_resource type="PackedScene" uid="uid://b3ptx08mcaj2s" path="res://objects/gui/menus/pause_menu.tscn" id="4_4gj3e"]
 [ext_resource type="PackedScene" uid="uid://c0ntoyywjbh2w" path="res://objects/gui/game_hud.tscn" id="5_fkm52"]
-[ext_resource type="PackedScene" uid="uid://btanc3baa468g" path="res://objects/gui/end_screen.tscn" id="6_dd1cc"]
+[ext_resource type="PackedScene" uid="uid://btanc3baa468g" path="res://objects/gui/menus/end_screen.tscn" id="6_dd1cc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_df840"]
 resource_local_to_scene = true
 shader = ExtResource("2_5iuyo")
 shader_parameter/invert = false
-shader_parameter/chrome_ab = 1.1
+shader_parameter/chrome_ab = 1.0
 shader_parameter/scanline_height = 0.0
 shader_parameter/bulge = true
 shader_parameter/vignette = true

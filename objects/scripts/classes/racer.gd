@@ -43,7 +43,7 @@ func background_interactions(tileData: TileData, state: PhysicsDirectBodyState2D
 	if tileType:
 		if tileType == "booster":
 			var boost_dir = tileData.get_custom_data("dir_norm")
-			state.apply_central_force(boost_dir * 350)
+			state.apply_central_force(boost_dir * 500)
 
 # Functions for moving the player
 func thrust(amount : float) -> void:

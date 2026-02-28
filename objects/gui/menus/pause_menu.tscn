@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b3ptx08mcaj2s"]
 
 [ext_resource type="FontFile" uid="uid://dburxiwbvmo73" path="res://assets/themes/fonts/AnonymousPro-Regular.ttf" id="1_4eddb"]
-[ext_resource type="Script" uid="uid://b8gxghlehhd4r" path="res://objects/gui/pause_menu.gd" id="1_7ei8y"]
+[ext_resource type="Script" uid="uid://b8gxghlehhd4r" path="res://objects/gui/menus/pause_menu.gd" id="1_7ei8y"]
 [ext_resource type="Theme" uid="uid://dxn6osqn7hlvi" path="res://assets/themes/hologram_button.tres" id="3_sblau"]
 
 [sub_resource type="Theme" id="Theme_kmrqu"]

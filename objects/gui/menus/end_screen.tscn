@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://btanc3baa468g"]
+
+[ext_resource type="FontFile" uid="uid://dvii51mr4lsmm" path="res://assets/themes/fonts/SevenSegmentFixed.otf" id="1_c6v5k"]
+[ext_resource type="Script" uid="uid://clpja7ymi0hbf" path="res://objects/gui/menus/end_screen.gd" id="1_rra1r"]
+[ext_resource type="Theme" uid="uid://dxn6osqn7hlvi" path="res://assets/themes/hologram_button.tres" id="3_f0088"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13hxf"]
+bg_color = Color(0, 0, 0, 0.76862746)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="EndScreen" type="Control" unique_id=78737981]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rra1r")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1459238310]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1313630244]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_13hxf")
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer" unique_id=1584074049]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=819277022]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=383950108]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=255925941]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_c6v5k")
+theme_override_font_sizes/font_size = 32
+text = "Time"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=447685065]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("1_c6v5k")
+theme_override_font_sizes/font_size = 64
+text = "00:00.000"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1013654355]
+layout_mode = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_right = 256
+
+[node name="BoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2" unique_id=1242528429]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Retry" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/BoxContainer" unique_id=1969309144]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme = ExtResource("3_f0088")
+theme_override_font_sizes/font_size = 24
+text = "Retry"
+
+[node name="Quit" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/BoxContainer" unique_id=505178864]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("3_f0088")
+theme_override_font_sizes/font_size = 24
+text = "Quit
+"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/BoxContainer/Quit" to="." method="_on_quit_pressed"]
