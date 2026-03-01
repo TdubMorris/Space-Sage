@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://b2fgf5t0r6k54" path="res://assets/shaders/screenfx.gdshader" id="1_7ijjg"]
 [ext_resource type="Texture2D" uid="uid://rk4t45yma43a" path="res://assets/textures/gui/spacesage.png" id="1_bac01"]
-[ext_resource type="Script" uid="uid://bsdshcdu1ny7w" path="res://objects/scenes/Menu/menu.gd" id="1_y4llj"]
-[ext_resource type="PackedScene" uid="uid://5r0bef3luprn" path="res://objects/scenes/Menu/menu_level.tscn" id="3_htruo"]
+[ext_resource type="Script" uid="uid://bsdshcdu1ny7w" path="res://objects/scenes/menu/menu.gd" id="1_y4llj"]
+[ext_resource type="PackedScene" uid="uid://5r0bef3luprn" path="res://objects/scenes/menu/menu_level.tscn" id="3_htruo"]
 [ext_resource type="Theme" uid="uid://dxn6osqn7hlvi" path="res://assets/themes/hologram_button.tres" id="3_pyigc"]
 [ext_resource type="Script" uid="uid://cchel0amafqfb" path="res://objects/gui/label.gd" id="6_te41c"]
 

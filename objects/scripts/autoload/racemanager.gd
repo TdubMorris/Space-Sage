@@ -2,6 +2,8 @@ extends Node
 
 signal raceEnd
 
+var current_id : String
+
 var _timerRunning : bool = false
 var currentTimeSeconds : float = 0
 var maxLaps : int = 3

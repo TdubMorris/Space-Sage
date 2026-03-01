@@ -90,4 +90,5 @@ theme_override_font_sizes/font_size = 24
 text = "Quit
 "
 
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/BoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/BoxContainer/Quit" to="." method="_on_quit_pressed"]

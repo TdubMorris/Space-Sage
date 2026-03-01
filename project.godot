@@ -20,6 +20,7 @@ config/icon="uid://dejnyawh6q2on"
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 RaceManager="*res://objects/scripts/autoload/racemanager.gd"
+FileManager="*uid://ciettn5h35aek"
 
 [display]
 
@@ -37,6 +38,7 @@ folder_colors={
 "res://addons/": "purple",
 "res://assets/": "green",
 "res://editor/": "yellow",
+"res://levels/": "blue",
 "res://objects/": "red"
 }
 
