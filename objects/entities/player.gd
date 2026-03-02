@@ -18,10 +18,11 @@ extends Racer
 #for detection if the player just started boosting
 var is_coasting : bool = false
 
-
 func _ready():
 	cooldownTimer.wait_time = cooldown
 	RaceManager.raceEnd.connect(race_end)
+
+var color_tween : Tween
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():
@@ -34,8 +35,10 @@ func _physics_process(delta):
 	if not (Input.is_action_pressed("Left") and Input.is_action_pressed("Right")):
 		if is_coasting and RaceManager.boost_charge >= RaceManager.boost_charge_time:
 			apply_impulse(300*Vector2.RIGHT.rotated(rotation))
-			var color_tween = get_tree().create_tween()
 			modulate = Color(1,1,1,1)
+			if color_tween:
+				color_tween.kill()
+			color_tween = create_tween()
 			color_tween.tween_property(self, "modulate", color, 1.0)
 		RaceManager.boost_charge = 0
 		is_coasting = false

@@ -42,6 +42,12 @@ folder_colors={
 "res://objects/": "red"
 }
 
+[global_group]
+
+Tilemap=""
+Checkpoint=""
+Player=""
+
 [input]
 
 Up={

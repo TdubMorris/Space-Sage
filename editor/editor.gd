@@ -5,15 +5,17 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var sidebar = %Sidebar
 
+var uuid : String = ""
+
 enum EditMode {
-	CAMERA,
 	TILES,
 	ENTITIES,
 }
 
-var mode := EditMode.CAMERA
+var mode := EditMode.TILES
 
 func _ready():
+	uuid = UUID.v4()
 	sidebar.connect("sidebar_click", SidebarClick)
 
 #region - Helper Methods
@@ -34,7 +36,6 @@ func _process(delta: float):
 	
 	#middle mouse camera pan
 	if Input.is_action_pressed("Pan") and sidebar.is_in(get_viewport().get_mouse_position()):
-		print("test")
 		if mm.size() == 2:
 			var movement = mm["cur"]-mm["prev"]
 			camera.position -= movement/camera.zoom.x
@@ -90,10 +91,8 @@ func _input(event):
 func SidebarClick(id : String):
 	match id:
 		"mode:0":
-			mode = EditMode.CAMERA
-		"mode:1":
 			mode = EditMode.TILES
-		"mode:2":
+		"mode:1":
 			mode = EditMode.ENTITIES
 		"playtest":
 			playtest()
@@ -195,14 +194,19 @@ func plotLine(x0: int, y0: int, x1: int, y1: int) -> Array[Vector2i]:
 
 #endregion
 
-#region - Level Saving and Loading
+#region - Level Saving
 
 func playtest():
-	loadLevel(level.duplicate())
+	save_level()
+	FileManager.load_from_resource(uuid)
 
-func loadLevel(levelNode: Node):
-	var gamescreen = preload("res://objects/scenes/gamescreen.tscn").instantiate()
-	gamescreen.add_child(levelNode)
-	get_tree().change_scene_to_node(gamescreen)
+func save_level():
+	var leveldata = LevelResource.new()
+	leveldata.tile_map_data = tilemap.tile_map_data
+	leveldata.uuid = uuid
+	if not DirAccess.dir_exists_absolute("user://levels"):
+		DirAccess.make_dir_absolute("user://levels")
+	print(ResourceSaver.save(leveldata, "user://levels/%s.res" % uuid, ResourceSaver.FLAG_COMPRESS))
+	print(OS.get_user_data_dir())
 
 #endregion

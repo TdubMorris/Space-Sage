@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cvc0fkoxhcld1" path="res://editor/editor_sidebar.gd" id="1_dsxm1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsxm1"]
-bg_color = Color(0.071517944, 0.09337008, 0.16796875, 1)
+bg_color = Color(0, 0, 0, 1)
 border_width_left = 4
-border_color = Color(0.03878784, 0.06347959, 0.12109375, 1)
+border_color = Color(0.1484375, 0.1484375, 0.1484375, 1)
 
 [node name="Sidebar" type="Control" unique_id=482858883]
 layout_mode = 3
@@ -36,8 +36,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dsxm1")
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel" unique_id=829213436]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
 text = "FPS : "
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel" unique_id=1971987562]
@@ -49,31 +49,62 @@ theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer" unique_id=1440778442]
 layout_mode = 2
-size_flags_vertical = 8
-alignment = 2
 
-[node name="ItemList" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1924506495]
+[node name="Tabs" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=617907293]
+layout_mode = 2
+allow_search = false
+auto_width = true
+auto_height = true
+item_count = 2
+max_columns = 2
+same_column_width = true
+fixed_column_width = 128
+icon_mode = 0
+fixed_icon_size = Vector2i(64, 64)
+item_0/text = "Level"
+item_1/text = "Metadata"
+
+[node name="Control" type="Control" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1075771238]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="EditModes" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1661907442]
+[node name="LevelEditTab" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=2061584811]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EditModes" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelEditTab" unique_id=1661907442]
 unique_name_in_owner = true
 layout_mode = 2
 focus_behavior_recursive = 1
 allow_search = false
 auto_width = true
 auto_height = true
-item_count = 2
+item_count = 3
 max_columns = 3
 same_column_width = true
-fixed_column_width = 96
+fixed_column_width = 85
 icon_mode = 0
 fixed_icon_size = Vector2i(64, 64)
 item_0/text = "Tiles"
 item_1/text = "Entities"
+item_2/text = "Select"
+
+[node name="TileList" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelEditTab" unique_id=1924506495]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EntityList" type="ItemList" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelEditTab" unique_id=1010466698]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1526118258]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1946536164]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Save and Playtest"
 
-[connection signal="item_selected" from="HBoxContainer/Panel/MarginContainer/VBoxContainer/EditModes" to="." method="_on_item_list_item_selected"]
+[connection signal="item_selected" from="HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelEditTab/EditModes" to="." method="_on_item_list_item_selected"]

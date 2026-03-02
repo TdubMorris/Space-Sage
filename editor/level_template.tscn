@@ -1,7 +1,28 @@
 [gd_scene format=3 uid="uid://bw2hwomtxvqkk"]
 
+[ext_resource type="TileSet" uid="uid://dh682ggvssfh2" path="res://objects/resources/tiles.tres" id="1_0dt6m"]
+[ext_resource type="Texture2D" uid="uid://ccnh7oqb5guwp" path="res://assets/textures/gameplay/backgrounds/bg.png" id="2_e3o1j"]
+[ext_resource type="PackedScene" uid="uid://bq6uqbalcvwc5" path="res://objects/entities/player.tscn" id="2_xcysd"]
+
 [node name="LevelTemplate" type="Node2D" unique_id=1074059758]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=74980471 groups=["Tilemap"]]
+tile_set = ExtResource("1_0dt6m")
 
 [node name="Entities" type="Node" parent="." unique_id=966347972]
 
+[node name="Player" parent="Entities" unique_id=1237775899 instance=ExtResource("2_xcysd")]
+modulate = Color(1, 1, 0, 1)
+
 [node name="Visuals" type="Node" parent="." unique_id=1187990151]
+
+[node name="Background" type="Parallax2D" parent="Visuals" unique_id=2041926146]
+z_index = -10
+scale = Vector2(4, 4)
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(320, 180)
+repeat_times = 4
+
+[node name="Bg" type="Sprite2D" parent="Visuals/Background" unique_id=499364664]
+position = Vector2(150, 94.75)
+texture = ExtResource("2_e3o1j")
