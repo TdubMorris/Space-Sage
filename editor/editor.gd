@@ -12,6 +12,17 @@ enum EditMode {
 	ENTITIES,
 }
 
+enum BrushType {
+	PAINT,
+	RECT,
+	FILL
+}
+
+
+var selected_tile : int = -1
+var selected_entity : int = 0
+var current_brush : BrushType = BrushType.PAINT
+
 var mode := EditMode.TILES
 
 func _ready():
@@ -33,6 +44,7 @@ var mm := {} #used for middle mouse panning
 func _process(delta: float):
 	for touch in touches:
 		touches[touch]["time"] += delta
+	tilemap_update()
 	
 	#middle mouse camera pan
 	if Input.is_action_pressed("Pan") and sidebar.is_in(get_viewport().get_mouse_position()):
@@ -48,10 +60,6 @@ func _process(delta: float):
 			mm["cur"] = get_viewport().get_mouse_position()
 	else:
 		mm = {}
-	
-	
-	
-	
 
 func _input(event):
 	if (event is InputEventScreenTouch or event is InputEventScreenDrag) and !sidebar.is_in(event.position):
@@ -64,9 +72,9 @@ func _input(event):
 			for touch in touches:
 				touches[touch]["time"] = 0
 		else:
-			touches.erase(event.index)
 			for touch in touches:
 				touches[touch]["time"] = 0
+			touches.erase(event.index)
 	elif event is InputEventScreenDrag:
 		if touches.has(event.index):
 			touches[event.index]["previous"] = touches[event.index]["current"]
@@ -82,8 +90,7 @@ func _input(event):
 	
 	if event.is_action_pressed("Scroll Down") and sidebar.is_in(get_viewport().get_mouse_position()):
 		zoom_camera(0.9,get_global_mouse_position())
-	
-	tilemap_update()
+
 #endregion
 
 #region - Sidebar Handeling
@@ -96,6 +103,14 @@ func SidebarClick(id : String):
 			mode = EditMode.ENTITIES
 		"playtest":
 			playtest()
+		"brush:0":
+			current_brush = BrushType.PAINT
+		"brush:1":
+			current_brush = BrushType.FILL
+	
+	var splitId = id.split(":")
+	if splitId[0] == "tile":
+		selected_tile = int(splitId[1])
 
 #endregion
 
@@ -151,12 +166,6 @@ func camera_input():
 
 #region - Tilemap Editing
 
-enum BrushType {
-	PAINT,
-	SQUARE,
-	FILL
-}
-
 func tilemap_update():
 	if mode != EditMode.TILES:
 		return
@@ -167,7 +176,7 @@ func tilemap_update():
 		var tile_pos_start = tilemap.local_to_map(screen_to_global(touches[i]["previous"]))
 		var tile_pos_end = tilemap.local_to_map(screen_to_global(touches[i]["current"]))
 		var cells = plotLine(tile_pos_start.x,tile_pos_start.y,tile_pos_end.x,tile_pos_end.y)
-		BetterTerrain.set_cells(tilemap, cells, 2)
+		BetterTerrain.set_cells(tilemap, cells, selected_tile)
 		BetterTerrain.update_terrain_cells(tilemap, cells)
 
 #Bresnham's Line Algorithm
@@ -192,13 +201,18 @@ func plotLine(x0: int, y0: int, x1: int, y1: int) -> Array[Vector2i]:
 			y0 += sy
 	return points
 
+#Floodfill algorithm
+func fill(pos: Vector2i) -> Array[Vector2i]:
+	var stack = []
+	return stack
+
 #endregion
 
 #region - Level Saving
 
 func playtest():
 	save_level()
-	FileManager.load_from_resource(uuid)
+	FileManager.load_from_resource("test")
 
 func save_level():
 	var leveldata = LevelResource.new()
@@ -206,7 +220,7 @@ func save_level():
 	leveldata.uuid = uuid
 	if not DirAccess.dir_exists_absolute("user://levels"):
 		DirAccess.make_dir_absolute("user://levels")
-	print(ResourceSaver.save(leveldata, "user://levels/%s.res" % uuid, ResourceSaver.FLAG_COMPRESS))
+	print(ResourceSaver.save(leveldata, "user://levels/%s.res" % "test", ResourceSaver.FLAG_COMPRESS))
 	print(OS.get_user_data_dir())
 
 #endregion

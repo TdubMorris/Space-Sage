@@ -13,6 +13,7 @@ shader_parameter/invert = false
 shader_parameter/chrome_ab = 0.0
 shader_parameter/scanline_height = 0.0
 shader_parameter/bulge = true
+shader_parameter/curvature = 5.0
 shader_parameter/vignette = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_jwr84"]
@@ -24,6 +25,7 @@ shader_parameter/invert = false
 shader_parameter/chrome_ab = 0.9
 shader_parameter/scanline_height = 8.0
 shader_parameter/bulge = false
+shader_parameter/curvature = 5.0
 shader_parameter/vignette = false
 
 [sub_resource type="Environment" id="Environment_pyigc"]

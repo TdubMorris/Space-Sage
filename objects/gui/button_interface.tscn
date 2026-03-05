@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvtamvwejubpg"]
 
-[ext_resource type="Script" uid="uid://celvyp2f2cx6s" path="res://objects/gui/interface_button.gd" id="1_0m0yt"]
+[ext_resource type="Script" uid="uid://celvyp2f2cx6s" path="res://objects/gui/custom_nodes/interface_button.gd" id="1_0m0yt"]
 
 [node name="ButtonInterface" type="Control" unique_id=716639677]
 layout_mode = 3

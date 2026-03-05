@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdq385h5x2dhk"
-path="res://.godot/imported/minosUUIDGeneratorForGodotIcon.png-973f5c31fa0ec8b4ed9458000308524a.ctex"
+uid="uid://yfbysxmtpj0o"
+path="res://.godot/imported/arrowright.png-677b14f8c628c75a96fd22c5e7a0d69b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Promotion/minosUUIDGeneratorForGodotIcon.png"
-dest_files=["res://.godot/imported/minosUUIDGeneratorForGodotIcon.png-973f5c31fa0ec8b4ed9458000308524a.ctex"]
+source_file="res://editor/editoricons/arrowright.png"
+dest_files=["res://.godot/imported/arrowright.png-677b14f8c628c75a96fd22c5e7a0d69b.ctex"]
 
 [params]
 

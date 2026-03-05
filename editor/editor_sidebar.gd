@@ -1,19 +1,14 @@
 extends Control
 
-@onready var area = %EditorArea
-@onready var modes = %EditModes
-
 signal sidebar_click(id : String)
 
+var tiles = [-1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 func _ready():
-	modes.select(0)
-	%PlayButton.pressed.connect(func(): sidebar_click.emit("playtest"))
+	%Tiles.item_selected.connect(func(index: int): sidebar_click.emit("tile:%d" % tiles[index]))
 
 func _process(delta):
-	$HBoxContainer/Panel/Label.text = "FPS: %d" % [1/delta]
+	pass
 
 func is_in(pos : Vector2) -> bool:
-	return (area.global_position.x < pos.x and pos.x < area.global_position.x + area.size.x) and (area.global_position.y < pos.y and pos.y < area.global_position.y + area.size.y)
-
-func _on_item_list_item_selected(index):
-	sidebar_click.emit("mode:%d" % [index])
+	return not %EditorTabs.get_global_rect().has_point(pos)

@@ -17,18 +17,30 @@ texture = ExtResource("1_26o4k")
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_42wss")
 0:0/0/custom_data_0 = "booster"
 0:0/0/custom_data_1 = Vector2(1, 0)
+0:0/0/metadata/_better_terrain = {
+&"type": 9
+}
 1:0/0 = 0
 1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_42wss")
 1:0/0/custom_data_0 = "booster"
 1:0/0/custom_data_1 = Vector2(0, 1)
+1:0/0/metadata/_better_terrain = {
+&"type": 6
+}
 0:1/0 = 0
 0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_42wss")
 0:1/0/custom_data_0 = "booster"
 0:1/0/custom_data_1 = Vector2(0, -1)
+0:1/0/metadata/_better_terrain = {
+&"type": 8
+}
 1:1/0 = 0
 1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_42wss")
 1:1/0/custom_data_0 = "booster"
 1:1/0/custom_data_1 = Vector2(-1, 0)
+1:1/0/metadata/_better_terrain = {
+&"type": 7
+}
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l61mf"]
 
@@ -468,6 +480,14 @@ metadata/_better_terrain = {
 &"coord": Vector2i(0, 0),
 &"source_id": 2
 }], ["BounceSlope", Color(1, 0, 0.6796875, 1), 0, [1], {
+&"path": ""
+}], ["BoostDown", Color(0, 0, 0, 1), 0, [], {
+&"path": ""
+}], ["BoostLeft", Color(0, 0, 0, 1), 0, [], {
+&"path": ""
+}], ["BoostUp", Color(0, 0, 0, 1), 0, [], {
+&"path": ""
+}], ["BoostRight", Color(0, 0, 0, 1), 0, [], {
 &"path": ""
 }]],
 &"version": "0.2"

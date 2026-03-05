@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p3b27jafs7hj"
-path="res://.godot/imported/minosUUIDGeneratorForGodotIcon.svg-750fa742ce9555cdff8e083f49f413ee.ctex"
+uid="uid://cgrqpr37uqji3"
+path="res://.godot/imported/arrow.png-b5afdbd1214f53db20559f369580d741.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Promotion/minosUUIDGeneratorForGodotIcon.svg"
-dest_files=["res://.godot/imported/minosUUIDGeneratorForGodotIcon.svg-750fa742ce9555cdff8e083f49f413ee.ctex"]
+source_file="res://editor/editoricons/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-b5afdbd1214f53db20559f369580d741.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

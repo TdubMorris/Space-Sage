@@ -29,7 +29,7 @@ z_index = -10
 scale = Vector2(4, 4)
 scroll_scale = Vector2(0.5, 0.5)
 repeat_size = Vector2(320, 180)
-repeat_times = 8
+repeat_times = 4
 
 [node name="Bg" type="Sprite2D" parent="EditedLevel/Visuals/Background" unique_id=162334606]
 position = Vector2(150, 94.75)

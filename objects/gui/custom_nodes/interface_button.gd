@@ -11,6 +11,9 @@ func _init():
 	if touchscreen_only and not DisplayServer.is_touchscreen_available():
 		hide()
 
+func _exit_tree():
+	release()
+
 func press():
 	var event = InputEventAction.new()
 	event.action = input_action

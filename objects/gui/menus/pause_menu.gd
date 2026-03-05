@@ -7,4 +7,4 @@ func _on_resume_button_button_up():
 
 func _on_quit_button_button_up():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://objects/scenes/Menu/menu.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://objects/scenes/menu/menu.tscn")

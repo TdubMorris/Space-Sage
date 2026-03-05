@@ -41,7 +41,7 @@ func load_from_resource(id: String) -> bool:
 	
 	var game_screen = preload("res://objects/scenes/gamescreen.tscn").instantiate()
 	game_screen.add_child(levelnode)
-	get_tree().change_scene_to_node(game_screen)
+	get_tree().call_deferred("change_scene_to_node", game_screen)
 	RaceManager.current_id = id
 	
 	return true
