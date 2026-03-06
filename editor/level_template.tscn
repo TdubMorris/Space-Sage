@@ -26,3 +26,37 @@ repeat_times = 4
 [node name="Bg" type="Sprite2D" parent="Visuals/Background" unique_id=499364664]
 position = Vector2(150, 94.75)
 texture = ExtResource("2_e3o1j")
+
+[node name="Boundry" type="Node" parent="." unique_id=969901139]
+
+[node name="ColorRect" type="ColorRect" parent="Boundry" unique_id=794642019]
+z_index = 1
+offset_left = 3999.0
+offset_top = -14000.0
+offset_right = 13999.0
+offset_bottom = 14000.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Boundry" unique_id=1675955232]
+z_index = 1
+offset_left = -13999.0
+offset_top = -14000.0
+offset_right = -3999.0
+offset_bottom = 14000.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Boundry" unique_id=1323037593]
+z_index = 1
+offset_left = -4000.0
+offset_top = 3999.0
+offset_right = 4000.0
+offset_bottom = 13999.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Boundry" unique_id=234160167]
+z_index = 1
+offset_left = -4000.0
+offset_top = -13999.0
+offset_right = 4000.0
+offset_bottom = -3999.0
+color = Color(0, 0, 0, 1)

@@ -3,7 +3,7 @@ extends Node2D
 @onready var level = $EditedLevel
 @onready var tilemap = $EditedLevel/TileMap
 @onready var camera = $Camera2D
-@onready var sidebar = %Sidebar
+@onready var editor_ui = %EditorUI
 
 var uuid : String = ""
 
@@ -26,8 +26,7 @@ var current_brush : BrushType = BrushType.PAINT
 var mode := EditMode.TILES
 
 func _ready():
-	uuid = UUID.v4()
-	sidebar.connect("sidebar_click", SidebarClick)
+	editor_ui.connect("ui_click", UIClick)
 
 #region - Helper Methods
 
@@ -47,10 +46,11 @@ func _process(delta: float):
 	tilemap_update()
 	
 	#middle mouse camera pan
-	if Input.is_action_pressed("Pan") and sidebar.is_in(get_viewport().get_mouse_position()):
+	if Input.is_action_pressed("Pan") and editor_ui.is_in(get_viewport().get_mouse_position()):
 		if mm.size() == 2:
 			var movement = mm["cur"]-mm["prev"]
 			camera.position -= movement/camera.zoom.x
+			clamp_camera()
 			mm["prev"] = mm["cur"]
 			mm["cur"] = get_viewport().get_mouse_position()
 		elif mm.size() == 1:
@@ -62,7 +62,7 @@ func _process(delta: float):
 		mm = {}
 
 func _input(event):
-	if (event is InputEventScreenTouch or event is InputEventScreenDrag) and !sidebar.is_in(event.position):
+	if (event is InputEventScreenTouch or event is InputEventScreenDrag) and !editor_ui.is_in(event.position):
 		touches.erase(event.index)
 		return
 	
@@ -85,17 +85,19 @@ func _input(event):
 				touches[touch]["time"] = 0
 		camera_input()
 	
-	if event.is_action_pressed("Scroll Up") and sidebar.is_in(get_viewport().get_mouse_position()):
+	if event.is_action_pressed("Scroll Up") and editor_ui.is_in(get_viewport().get_mouse_position()):
 		zoom_camera(1.1,get_global_mouse_position())
+		clamp_camera()
 	
-	if event.is_action_pressed("Scroll Down") and sidebar.is_in(get_viewport().get_mouse_position()):
+	if event.is_action_pressed("Scroll Down") and editor_ui.is_in(get_viewport().get_mouse_position()):
 		zoom_camera(0.9,get_global_mouse_position())
+		clamp_camera()
 
 #endregion
 
 #region - Sidebar Handeling
 
-func SidebarClick(id : String):
+func UIClick(id : String):
 	match id:
 		"mode:0":
 			mode = EditMode.TILES
@@ -161,6 +163,12 @@ func camera_input():
 	if touches.size() > 1:
 		zoom_camera(rad/prev_rad, screen_to_global(mid))
 	
+	clamp_camera()
+	
+
+func clamp_camera():
+	camera.global_position.x = clamp(camera.global_position.x, -4000, 4000)
+	camera.global_position.y = clamp(camera.global_position.y, -4000, 4000)
 
 #endregion
 
@@ -176,7 +184,9 @@ func tilemap_update():
 		var tile_pos_start = tilemap.local_to_map(screen_to_global(touches[i]["previous"]))
 		var tile_pos_end = tilemap.local_to_map(screen_to_global(touches[i]["current"]))
 		var cells = plotLine(tile_pos_start.x,tile_pos_start.y,tile_pos_end.x,tile_pos_end.y)
-		BetterTerrain.set_cells(tilemap, cells, selected_tile)
+		BetterTerrain.set_cells(tilemap, cells.filter(
+			func(cell): return cell.x >= -250 and cell.x <= 250 and cell.y >= -250 and cell.y <= 250
+		), selected_tile)
 		BetterTerrain.update_terrain_cells(tilemap, cells)
 
 #Bresnham's Line Algorithm

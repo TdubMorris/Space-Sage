@@ -30,7 +30,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/tdubs-pluggin/plugin.cfg")
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/plugin_reloader/plugin.cfg", "res://addons/tdubs-plugin/plugin.cfg", "res://addons/zylann.editor_debugger/plugin.cfg")
 
 [file_customization]
 
