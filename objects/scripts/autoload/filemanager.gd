@@ -6,10 +6,10 @@ extends Node
 ## returns bool - whether or not the level was loaded
 func load_level(id: String) -> bool:
 	var levelPath : String = ""
-	if ResourceLoader.exists("res://levels/%s/level.scn" % id):
-		levelPath = "res://levels/%s/level.scn" % id
-	elif ResourceLoader.exists("user://levels/%s/level.scn" % id):
-		levelPath = "user://levels/%s/level.scn" % id
+	if ResourceLoader.exists("res://levels/%s.scn" % id):
+		levelPath = "res://levels/%s.scn" % id
+	elif ResourceLoader.exists("user://levels/%s.scn" % id):
+		levelPath = "user://levels/%s.scn" % id
 	else:
 		print("scene does not exist")
 		return false
