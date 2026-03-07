@@ -18,7 +18,6 @@ enum BrushType {
 	FILL
 }
 
-
 var selected_tile : int = -1
 var selected_entity : int = 0
 var current_brush : BrushType = BrushType.PAINT
@@ -180,17 +179,25 @@ func tilemap_update():
 	if touches.size() != 1 or touches[touches.keys()[0]]["time"] < 0.05:
 		return
 	
-	for i in touches:
-		var tile_pos_start = tilemap.local_to_map(screen_to_global(touches[i]["previous"]))
-		var tile_pos_end = tilemap.local_to_map(screen_to_global(touches[i]["current"]))
-		var cells = plotLine(tile_pos_start.x,tile_pos_start.y,tile_pos_end.x,tile_pos_end.y)
-		BetterTerrain.set_cells(tilemap, cells.filter(
-			func(cell): return cell.x >= -250 and cell.x <= 250 and cell.y >= -250 and cell.y <= 250
-		), selected_tile)
-		BetterTerrain.update_terrain_cells(tilemap, cells)
+	if current_brush == BrushType.PAINT:
+		for i in touches:
+			var tile_pos_start : Vector2i= tilemap.local_to_map(screen_to_global(touches[i]["previous"]))
+			var tile_pos_end : Vector2i = tilemap.local_to_map(screen_to_global(touches[i]["current"]))
+			var cells : Array[Vector2i] = plotLine(tile_pos_start.x,tile_pos_start.y,tile_pos_end.x,tile_pos_end.y)
+			BetterTerrain.set_cells(tilemap, cells.filter(
+				func(cell): return cell.x >= -250 and cell.x <= 250 and cell.y >= -250 and cell.y <= 250
+			), selected_tile)
+			BetterTerrain.update_terrain_cells(tilemap, cells)
+	elif current_brush == BrushType.FILL:
+		for i in touches:
+			var pos : Vector2i = tilemap.local_to_map(screen_to_global(touches[i]["current"]))
+			var tile_replaced : int = BetterTerrain.get_cell(tilemap, pos)
+			var cells : Array[Vector2i] = floodfill(pos, tile_replaced)
+			BetterTerrain.set_cells(tilemap, cells, selected_tile)
+			BetterTerrain.update_terrain_cells(tilemap, cells)
 
-#Bresnham's Line Algorithm
-#ok yes im lazy, this helper function was made by ChatGPT, sue me or something (please dont)
+# Bresnham's Line Algorithm
+# ok yes im lazy, this helper function was made by ChatGPT, sue me or something (please dont)
 func plotLine(x0: int, y0: int, x1: int, y1: int) -> Array[Vector2i]:
 	var points: Array[Vector2i] = []
 	var dx : int = abs(x1 - x0)
@@ -211,10 +218,23 @@ func plotLine(x0: int, y0: int, x1: int, y1: int) -> Array[Vector2i]:
 			y0 += sy
 	return points
 
-#Floodfill algorithm
-func fill(pos: Vector2i) -> Array[Vector2i]:
-	var stack = []
-	return stack
+# Used for flood fill
+const directions : Array[Vector2i] = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
+
+# Floodfill algorithm
+func floodfill(pos: Vector2i, type: int) -> Array[Vector2i]:
+	var queue : Array[Vector2i] = [pos]
+	var visited : Array[Vector2i] = []
+	while not queue.is_empty():
+		var current : Vector2i = queue.pop_front()
+		if current in visited:
+			continue
+		visited.append(current)
+		for direction in directions:
+			var check : Vector2i = current + direction
+			if !visited.has(check) and BetterTerrain.get_cell(tilemap, check) == type and Rect2i(pos+Vector2i(-16,-16), Vector2i(32,32)).has_point(check):
+				queue.append(check)
+	return visited
 
 #endregion
 

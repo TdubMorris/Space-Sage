@@ -22,7 +22,7 @@ func load_level(id: String) -> bool:
 	
 	return true
 
-## Loads a level from a level resource file [b]
+## Loads a level from a level resource file [br]
 ## [param id] - the name of the resource file
 func load_from_resource(id: String) -> bool:
 	var level : LevelResource

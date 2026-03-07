@@ -196,7 +196,8 @@ item_6/icon = SubResource("AtlasTexture_28obq")
 item_7/icon = SubResource("AtlasTexture_htn7o")
 item_8/icon = SubResource("AtlasTexture_gj6ct")
 
-[node name="Tiles" type="ItemList" parent="EditorTabs/Tiles/HBoxContainer" unique_id=2119378469]
+[node name="Tools" type="ItemList" parent="EditorTabs/Tiles/HBoxContainer" unique_id=2119378469]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 16

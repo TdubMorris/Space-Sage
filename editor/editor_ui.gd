@@ -5,11 +5,14 @@ signal ui_click(id : String)
 var tiles = [-1, 2, 3, 4, 5, 9, 6, 8, 7]
 
 func _ready():
+	%Tools.select(0)
 	%Tiles.item_selected.connect(func(index: int): ui_click.emit("tile:%d" % tiles[index]))
 	%PauseButton.button_down.connect(func(): %PauseMenu.show())
 	%Resume.pressed.connect(func(): %PauseMenu.hide())
 	%Quit.pressed.connect(func(): get_tree().change_scene_to_file("res://objects/scenes/menu/menu.tscn"))
 	%SavePlay.pressed.connect(func(): ui_click.emit("playtest"))
+	%Tools.item_selected.connect(func(index: int): ui_click.emit("brush:%d" % index))
+	%EditorTabs.tab_changed.connect(func(tab: int): ui_click.emit("mode:%d" % tab))
 
 func _input(event):
 	if event.is_action_pressed("Pause"):
